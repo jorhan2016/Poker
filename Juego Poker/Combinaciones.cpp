@@ -79,7 +79,7 @@ bool Combinaciones::verificarColor()
 	return booleano;
 }
 
-bool Combinaciones::verificarEscalera()
+bool Combinaciones::verificarEscalera() //ARREGLAR, ESTA MALO.
 {
 	bool booleano = false;
 	int contador = 0;
@@ -88,6 +88,7 @@ bool Combinaciones::verificarEscalera()
 		if (cartas[i].getNumeroCarta() == cartas[i-1].getNumeroCarta()+1)
 		{
 			contador++;
+			escalera.push_back (cartas[i]);
 		}
 		else
 		{
@@ -108,12 +109,60 @@ int Combinaciones::obtenerCartaAlta()
 
 vector<vector<int>> Combinaciones::obtenerRepeticiones()
 {
+	vector<vector<int>> repeticiones;
+	return Combinaciones::obtenerRepeticiones(1,repeticiones);
+}
 
-	return vector<vector<int>>();
+vector<vector<int>> Combinaciones::obtenerRepeticiones(int inicio, vector<vector<int>> matriz)
+{
+	if(inicio < cartas.size())
+	{
+		int contador = 1;
+		for (int i = inicio; i < cartas.size(); i++)
+		{
+			vector<int> auxiliar;
+			if (cartas[i].getNumeroCarta() == cartas[i-1].getNumeroCarta())
+			{
+				contador++;
+				auxiliar.assign (cartas[i-1].getNumeroCarta(),contador);
+			}
+			else
+			{
+				matriz.push_back (auxiliar);
+				Combinaciones::obtenerRepeticiones(i+1,matriz);
+			}
+		}
+	}
+	else
+	{
+		return matriz;
+	}
 }
 
 void Combinaciones::setNumeroMano()
 {
+	Combinaciones::ordenarCartas();
+	if (Combinaciones::verificarEscalera())
+	{
+		if (Combinaciones::verificarColor())
+		{
+			if (escalera[0].getNumeroCarta() == 10)
+			{
+				numeroMano = 10;
+			}
+			else
+			{
+				numeroMano = 9;
+			}
+		}
+		else
+		{
+			numeroMano = 5;
+		}
+	}
+	else
+	{
+	}
 }
 
 int Combinaciones::getNumeroMano()

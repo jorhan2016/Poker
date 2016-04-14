@@ -1,4 +1,4 @@
-#pragma once
+	#pragma once
 #include "Carta.h"
 #include <vector>
 using namespace std;
@@ -23,7 +23,9 @@ public:
 
 private:
 	vector<Carta> cartas;
+	vector<Carta> escalera;
 	int numeroMano;
 	int numeroTurno;
+	vector<vector<int>> obtenerRepeticiones(int, vector<vector<int>>);
 };
 
