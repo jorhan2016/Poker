@@ -17,7 +17,7 @@ public:
 	bool verificarColor();
 	bool verificarEscalera();
 	int obtenerCartaAlta();
-	vector<int> obtenerRepeticiones();
+	vector<vector<int>> obtenerRepeticiones();
 	void setNumeroMano();
 	int getNumeroMano();
 

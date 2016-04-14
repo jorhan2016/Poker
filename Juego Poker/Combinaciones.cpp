@@ -81,17 +81,35 @@ bool Combinaciones::verificarColor()
 
 bool Combinaciones::verificarEscalera()
 {
-	return false;
+	bool booleano = false;
+	int contador = 0;
+	for (int i = 1; i < cartas.size(); i++)
+	{	
+		if (cartas[i].getNumeroCarta() == cartas[i-1].getNumeroCarta()+1)
+		{
+			contador++;
+		}
+		else
+		{
+			break;
+		}
+	}
+	if (contador >= numeroTurno)
+	{
+		booleano = true;
+	}
+	return booleano;
 }
 
 int Combinaciones::obtenerCartaAlta()
 {
-	return 0;
+	return cartas[cartas.size()-1].getNumeroCarta();
 }
 
-vector<int> Combinaciones::obtenerRepeticiones()
+vector<vector<int>> Combinaciones::obtenerRepeticiones()
 {
-	return vector<int>();
+
+	return vector<vector<int>>();
 }
 
 void Combinaciones::setNumeroMano()
