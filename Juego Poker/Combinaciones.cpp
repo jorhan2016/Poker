@@ -79,25 +79,35 @@ bool Combinaciones::verificarColor()
 	return booleano;
 }
 
-bool Combinaciones::verificarEscalera() //ARREGLAR, ESTA MALO.
+bool Combinaciones::verificarEscalera()
+{
+	return Combinaciones::verificarEscalera(1);
+}
+
+bool Combinaciones::verificarEscalera(int inicio)
 {
 	bool booleano = false;
-	int contador = 0;
-	for (int i = 1; i < cartas.size(); i++)
-	{	
-		if (cartas[i].getNumeroCarta() == cartas[i-1].getNumeroCarta()+1)
-		{
-			contador++;
-			escalera.push_back (cartas[i]);
-		}
-		else
-		{
-			break;
-		}
-	}
-	if (contador >= numeroTurno)
+	if (inicio < cartas.size())
 	{
-		booleano = true;
+		int contador = 0;
+		escalera.assign (cartas[inicio-1]);
+		for (int i = inicio; i < cartas.size(); i++)
+		{	
+			if (cartas[i].getNumeroCarta() == cartas[i-1].getNumeroCarta()+1)
+			{
+				contador++;
+				escalera.push_back (cartas[i]);
+				if (contador >= numeroTurno)
+				{
+					booleano = true;
+					break;
+				}
+			}
+			else
+			{
+				verificarEscalera(i+1);
+			}
+		}
 	}
 	return booleano;
 }
@@ -162,11 +172,66 @@ void Combinaciones::setNumeroMano()
 	}
 	else
 	{
+		vector<vector<int>> matrizRepeticiones = Combinaciones::obtenerRepeticiones();
+		if(matrizRepeticiones.size() != 0)
+		{
+			vector<int> mayorRepeticion = {0,0};
+			for (int i = 0; i < matrizRepeticiones.size(); i++)
+			{
+				if (matrizRepeticiones[i][1] > mayorRepeticion[1])
+				{
+					mayorRepeticion = matrizRepeticiones[i];
+				}
+			}
+			if (mayorRepeticion[1] == 4)
+			{
+				numeroMano = 8;
+			}
+			else
+			{
+				if (mayorRepeticion[1] == 3)
+				{
+					numeroMano = 4;
+					for (int i = 0; i < matrizRepeticiones.size(); i++)
+					{
+						if (matrizRepeticiones[i][1] == 2)
+						{
+							numeroMano = 7;
+							break;
+						}
+					}
+				}
+				else
+				{
+					numeroMano = 2;
+					for (int i = 0; i < matrizRepeticiones.size(); i++)
+					{
+
+						if (matrizRepeticiones[i][0] != mayorRepeticion[0] && matrizRepeticiones[i][1] == 2)
+						{
+							numeroMano = 3;
+							break;
+						}
+					}
+				}
+			}
+		}
+		else
+		{
+			if (Combinaciones::verificarColor())
+			{
+				numeroMano = 6;
+			}
+			else
+			{
+				numeroMano = 1;
+			}
+		}
 	}
 }
 
 int Combinaciones::getNumeroMano()
 {
-	return 0;
+	return numeroMano;
 }
 

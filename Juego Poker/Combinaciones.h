@@ -27,5 +27,6 @@ private:
 	int numeroMano;
 	int numeroTurno;
 	vector<vector<int>> obtenerRepeticiones(int, vector<vector<int>>);
+	bool verificarEscalera(int);
 };
 
