@@ -26,7 +26,7 @@ private:
 	vector<Carta> escalera;
 	int numeroMano;
 	int numeroTurno;
-	vector<vector<int>> obtenerRepeticiones(int, vector<vector<int>>);
-	bool verificarEscalera(int);
+	vector<vector<int>> obtenerRepeticiones(int inicio, vector<vector<int>> matriz);
+	bool verificarEscalera(int inicio);
 };
 
