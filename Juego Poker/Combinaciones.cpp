@@ -62,11 +62,13 @@ bool Combinaciones::verificarColor()
 	bool booleano = false;
 	for (int i = 0; i < cartas.size(); i++)
 	{
+		color.clear();
 		int contador = 0;
 		for (int j = 0; j < cartas.size(); j++)
 		{
 			if (cartas[i].getPaloCarta == cartas[j].getPaloCarta)
 			{
+				color.push_back (cartas[j].getNumeroCarta());
 				contador++;
 			}
 		}

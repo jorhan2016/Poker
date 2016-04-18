@@ -24,6 +24,7 @@ public:
 private:
 	vector<Carta> cartas;
 	vector<Carta> escalera;
+	vector<Carta> color;
 	int numeroMano;
 	int numeroTurno;
 	vector<vector<int>> obtenerRepeticiones(int inicio, vector<vector<int>> matriz);
