@@ -108,48 +108,28 @@ int Dealer::determinarGanador(vector<Jugador> jugadores, vector<Carta> cartasCom
 	}
 	else
 	{
-		switch (manoGanadora)
+		Carta cartaVacia;
+		cartaVacia.setNumero(0);
+		cartaVacia.setPalo(0);
+		vector<Carta> auxiliar;
+		auxiliar.push_back(cartaVacia);
+		manoJugador.clear();
+		manoGanadora = 0;
+		for(int i = 0 ; i < jugadorGanador.size() ; i++)
 		{
-			case 1:
-  			
-  			break;
-
-			case 2:
-  			Code to execute if <variable> == that-value
-  			break;
-			
-			case 3:
-  			Code to execute if <variable> == that-value
-  			break;
-
-			case 4:
-  			Code to execute if <variable> == that-value
-  			break;
-
-			case 5:
-  			Code to execute if <variable> == that-value
-  			break;
-
-			case 6:
-  			Code to execute if <variable> == that-value
-  			break;
-
-			case 7:
-  			Code to execute if <variable> == that-value
-  			break;
-
-			case 8:
-  			Code to execute if <variable> == that-value
-  			break;
-
-			case 9:
-  			Code to execute if <variable> == that-value
-  			break;
-
-			case 10:
-  			Code to execute if <variable> == that-value
-  			break;
+  			combinacion.setCartas(jugadores[jugadorGanador[i]].getCartasJugador() , auxiliar);
+			manoJugador.push_back(combinacion.obtenerCartaAlta());
 		}
+		jugadorGanador.clear();
+		for(int j = 0 ; j < manoJugador.size() ; j++)
+		{
+			if(manoJugador[j] > manoGanadora)
+			{
+				manoGanadora = manoJugador[j];
+				jugadorGanador.push_back(j);
+			}
+		}
+		return jugadorGanador[jugadorGanador.size()-1] + 1;
 	}
 }
 
