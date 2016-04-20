@@ -13,10 +13,11 @@ public:
 
 	Dealer();
 	virtual ~Dealer();
+	Dealer(Dealer& otro);
 
 	void setCiega();
 	void setMazo();
-	void setDineroTurno(int dinero);
+	void setDineroTurno(int& dinero);
 	void setContadorMazo();
 	int getCiega();
 	Mazo getMazo();
@@ -25,7 +26,7 @@ public:
 	void limpiarDineroTurno();
 	Carta colocarCartaComunitaria();
 	vector<Carta> repartirCartasJugador();
-	int determinarGanador(vector<Jugador> jugadores, vector<Carta> cartasComunitarias);
+	int determinarGanador(vector<Jugador>& jugadores, vector<Carta>& cartasComunitarias);
 
 private:
 

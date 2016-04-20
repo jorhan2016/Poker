@@ -10,7 +10,15 @@ Combinaciones::~Combinaciones()
 {
 }
 
-void Combinaciones::setNumeroTurno(int turno)
+Combinaciones::Combinaciones(Combinaciones& otro)
+{
+	this->cartas = otro.cartas;
+	this->escalera = otro.escalera;
+	this->numeroMano = otro.numeroMano;
+	this->numeroTurno = otro.numeroTurno;
+}
+
+void Combinaciones::setNumeroTurno(int& turno)
 {
 	numeroTurno = turno;
 }
@@ -20,7 +28,7 @@ int Combinaciones::getNumeroTurno()
 	return numeroTurno;
 }
 
-void Combinaciones::setCartas(vector<Carta> jugador, vector<Carta> comunitarias)
+void Combinaciones::setCartas(vector<Carta>& jugador, vector<Carta>& comunitarias)
 {
 	for (int i = 0; i < jugador.size(); i++)
 	{
@@ -84,7 +92,7 @@ bool Combinaciones::verificarEscalera()
 	return Combinaciones::verificarEscalera(1);
 }
 
-bool Combinaciones::verificarEscalera(int inicio)
+bool Combinaciones::verificarEscalera(int& inicio)
 {
 	bool booleano = false;
 	if (inicio < cartas.size())
@@ -123,7 +131,7 @@ vector<vector<int>> Combinaciones::obtenerRepeticiones()
 	return Combinaciones::obtenerRepeticiones(1,repeticiones);
 }
 
-vector<vector<int>> Combinaciones::obtenerRepeticiones(int inicio, vector<vector<int>> matriz)
+vector<vector<int>> Combinaciones::obtenerRepeticiones(int& inicio, vector<vector<int>>& matriz)
 {
 	if(inicio < cartas.size())
 	{

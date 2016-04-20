@@ -10,6 +10,14 @@ Dealer::~Dealer()
 {
 }
 
+Dealer(Dealer& otro)
+{
+	this->ciega = otro.ciega;
+	this->mazo = otro.mazo;
+	this->dineroTurno = otro.dineroTurno;
+	this->contadorMazo = otro.contadorMazo;
+}
+
 void Dealer::setCiega()
 {
 	srand((unsigned int)time(0));
@@ -22,7 +30,7 @@ void Dealer::setMazo()
 	mazo.revolverCartas();
 }
 
-void Dealer::setDineroTurno(int dinero)
+void Dealer::setDineroTurno(int& dinero)
 {
 	dineroTurno += dinero;
 }
@@ -73,7 +81,7 @@ vector<Carta> Dealer::repartirCartasJugador()
 	return cartasJugador;
 }
 
-int Dealer::determinarGanador(vector<Jugador> jugadores, vector<Carta> cartasComunitarias)
+int Dealer::determinarGanador(vector<Jugador>& jugadores, vector<Carta>& cartasComunitarias)
 {
 	Combinaciones combinacion;
 	combinacion.setNumeroTurno(4);
