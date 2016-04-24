@@ -18,7 +18,7 @@ Combinaciones::Combinaciones(Combinaciones& otro)
 	this->numeroTurno = otro.numeroTurno;
 }
 
-void Combinaciones::setNumeroTurno(int& turno)
+void Combinaciones::setNumeroTurno(int turno)
 {
 	numeroTurno = turno;
 }
@@ -28,7 +28,12 @@ int Combinaciones::getNumeroTurno()
 	return numeroTurno;
 }
 
-void Combinaciones::setCartas(vector<Carta>& jugador, vector<Carta>& comunitarias)
+vector<Carta> Combinaciones::getEscalera()
+{
+	return escalera;
+}
+
+void Combinaciones::setCartas(vector<Carta> jugador, vector<Carta> comunitarias)
 {
 	for (int i = 0; i < jugador.size(); i++)
 	{
@@ -48,8 +53,8 @@ void Combinaciones::ordenarCartas()
 	while (!ordenado)
 	{
 		int contador = 0;
-		for (int i = 0; i < cartas.size()-1; i++)
-		{	
+		for (int i = 0; i < cartas.size() - 1; i++)
+		{
 			if (cartas[i].getNumeroCarta() > cartas[i + 1].getNumeroCarta())
 			{
 				contador++;
@@ -78,7 +83,7 @@ bool Combinaciones::verificarColor()
 				contador++;
 			}
 		}
-		if (contador >= numeroTurno+1)
+		if (contador >= numeroTurno + 1)
 		{
 			booleano = true;
 			break;
@@ -92,19 +97,20 @@ bool Combinaciones::verificarEscalera()
 	return Combinaciones::verificarEscalera(1);
 }
 
-bool Combinaciones::verificarEscalera(int& inicio)
+bool Combinaciones::verificarEscalera(int inicio)
 {
 	bool booleano = false;
 	if (inicio < cartas.size())
 	{
 		int contador = 0;
-		escalera.assign (cartas[inicio-1]);
+		escalera.clear;
+		escalera.push_back(cartas[inicio - 1]);
 		for (int i = inicio; i < cartas.size(); i++)
-		{	
-			if (cartas[i].getNumeroCarta() == cartas[i-1].getNumeroCarta()+1)
+		{
+			if (cartas[i].getNumeroCarta() == cartas[i - 1].getNumeroCarta() + 1)
 			{
 				contador++;
-				escalera.push_back (cartas[i]);
+				escalera.push_back(cartas[i]);
 				if (contador >= numeroTurno)
 				{
 					booleano = true;
@@ -113,7 +119,7 @@ bool Combinaciones::verificarEscalera(int& inicio)
 			}
 			else
 			{
-				verificarEscalera(i+1);
+				verificarEscalera(i + 1);
 			}
 		}
 	}
@@ -122,32 +128,32 @@ bool Combinaciones::verificarEscalera(int& inicio)
 
 int Combinaciones::obtenerCartaAlta()
 {
-	return cartas[cartas.size()-1].getNumeroCarta();
+	return cartas[cartas.size() - 1].getNumeroCarta();
 }
 
 vector<vector<int>> Combinaciones::obtenerRepeticiones()
 {
 	vector<vector<int>> repeticiones;
-	return Combinaciones::obtenerRepeticiones(1,repeticiones);
+	return Combinaciones::obtenerRepeticiones(1, repeticiones);
 }
 
-vector<vector<int>> Combinaciones::obtenerRepeticiones(int& inicio, vector<vector<int>>& matriz)
+vector<vector<int>> Combinaciones::obtenerRepeticiones(int inicio, vector<vector<int>> matriz)
 {
-	if(inicio < cartas.size())
+	if (inicio < cartas.size())
 	{
 		int contador = 1;
 		for (int i = inicio; i < cartas.size(); i++)
 		{
 			vector<int> auxiliar;
-			if (cartas[i].getNumeroCarta() == cartas[i-1].getNumeroCarta())
+			if (cartas[i].getNumeroCarta() == cartas[i - 1].getNumeroCarta())
 			{
 				contador++;
-				auxiliar.assign (cartas[i-1].getNumeroCarta(),contador);
+				auxiliar.assign(cartas[i - 1].getNumeroCarta(), contador);
 			}
 			else
 			{
-				matriz.push_back (auxiliar);
-				Combinaciones::obtenerRepeticiones(i+1,matriz);
+				matriz.push_back(auxiliar);
+				Combinaciones::obtenerRepeticiones(i + 1, matriz);
 			}
 		}
 	}
@@ -181,9 +187,9 @@ void Combinaciones::setNumeroMano()
 	else
 	{
 		vector<vector<int>> matrizRepeticiones = Combinaciones::obtenerRepeticiones();
-		if(matrizRepeticiones.size() != 0)
+		if (matrizRepeticiones.size() != 0)
 		{
-			vector<int> mayorRepeticion = {0,0};
+			vector<int> mayorRepeticion = { 0, 0 };
 			for (int i = 0; i < matrizRepeticiones.size(); i++)
 			{
 				if (matrizRepeticiones[i][1] > mayorRepeticion[1])

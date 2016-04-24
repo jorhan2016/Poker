@@ -1,4 +1,4 @@
-	#pragma once
+#pragma once
 #include "Carta.h"
 #include <vector>
 using namespace std;
@@ -10,9 +10,10 @@ public:
 	~Combinaciones();
 	Combinaciones(Combinaciones& otro);
 
-	void setNumeroTurno(int& turno);
+	void setNumeroTurno(int turno);
 	int getNumeroTurno();
-	void setCartas(vector<Carta>& jugador, vector<Carta>& comunitarias);
+	vector<Carta> getEscalera();
+	void setCartas(vector<Carta> jugador, vector<Carta> comunitarias);
 	vector<Carta> getCartas();
 	void ordenarCartas();
 	bool verificarColor();
@@ -27,7 +28,8 @@ private:
 	vector<Carta> escalera;
 	int numeroMano;
 	int numeroTurno;
-	vector<vector<int>> obtenerRepeticiones(int& inicio, vector<vector<int>>& matriz);
-	bool verificarEscalera(int& inicio);
+	vector<vector<int>> obtenerRepeticiones(int inicio, vector<vector<int>> matriz);
+	bool verificarEscalera(int inicio);
 };
+
 

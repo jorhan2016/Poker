@@ -1,10 +1,9 @@
-	#pragma once
+#pragma once
 #include "Mazo.h"
 #include "Carta.h"
 #include "Jugador.h"
 #include "Combinaciones.h"
-#include <vector>
-#include <cstdlib>
+
 using namespace std;
 
 class Dealer {
@@ -17,7 +16,7 @@ public:
 
 	void setCiega();
 	void setMazo();
-	void setDineroTurno(int& dinero);
+	void setDineroTurno(int dinero);
 	void setContadorMazo();
 	int getCiega();
 	Mazo getMazo();
@@ -26,14 +25,14 @@ public:
 	void limpiarDineroTurno();
 	Carta colocarCartaComunitaria();
 	vector<Carta> repartirCartasJugador();
-	int determinarGanador(vector<Jugador>& jugadores, vector<Carta>& cartasComunitarias);
+	vector<Jugador> determinarGanador(vector<Jugador> jugadores, vector<Carta> cartasComunitarias);
 
 private:
 
 	int ciega;
 	Mazo mazo;
 	int dineroTurno;
-	int contadorMazo;
-	
+	int contadorMazo;//BORRAR
+
 };
 
