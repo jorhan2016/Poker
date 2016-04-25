@@ -1,6 +1,7 @@
 #ifndef DEALER_H
 #define	DEALER_H
 #include <sstream>
+#include <vector>
 using namespace std;
 
 class Dealer {
@@ -13,8 +14,8 @@ public:
 	void limpiarAcumulado();
 	void colocarCartasComunitarias();
 	void revelarCartas();
-	Carta[] sacarCartas(int cantidadCartas);
-
+	Carta sacarCartas(int cantidadCartas);
+	vector <Carta> repartirCartasJugador();
 	virtual ~Dealer();
 
 private:
