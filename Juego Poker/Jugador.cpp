@@ -32,7 +32,11 @@ int Jugador::getDinero()
 
 void Jugador::reducirDinero(int rebaja) 
 {
+<<<<<<< HEAD
 	dinero = dinero - rebaja;
+=======
+	dinero = dinero + rebaja;
+>>>>>>> 1606f901c953aaf186b1a6f71cf822fc472f0975
 }
 
 bool Jugador::decidirApuesta(int apuesta, int numeroMano, int numTurno) //agregué el segundo y tercer parametro, creo que se necesita. es mejor para saber que mano tiene cada jugador y el turno en que van (lo q se obtiene de Combinacion) ya que son casos dependientes de eso.
