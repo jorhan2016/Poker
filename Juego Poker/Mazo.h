@@ -1,25 +1,19 @@
-#ifndef MAZO_H
-#define	MAZO_H
-#include <sstream>
+#pragma once
+#include <vector>
+
 using namespace std;
 
-class Mazo {
+Class Mazo {
 
-
+private:
+	Carta misCartas[52];
+	
 public:
 
 	Mazo();
-	void setCartas();
-	Carta carta getCarta(int indice);
-
-	virtual ~Mazo();
-
-
-private:
-
-	int CANTIDAD_CARTAS = 52;
-	Carta[] cartas;
-	int posicionSuperior;
-	void revolverMazo();
+	~Mazo();
+	void setBaraja();
+	Carta[52] getBaraja();
+	void revolverCartas();
 
 }
