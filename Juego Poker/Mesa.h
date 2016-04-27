@@ -7,7 +7,7 @@ Class Mesa {
 
 private:
 
-	Carta[5] cartasComunitarias;
+	vector<Carta> cartasComunitarias;
 	int apuesta;
 	int dineroMesa;
 
@@ -15,10 +15,10 @@ public:
 
 	Mesa();
 	~Mesa();
-	void setCartasComunitarias(Carta[]);
+	void setCartasComunitarias(vector<Carta>);
 	void setApuesta(int, int);
 	void setDineroMesa(int);
-	Carta[] getCartasComunitarias();
+	vector<Carta> getCartasComunitarias();
 	int getApuesta();
 	int getDineroMesa();
 	void limpiarDineroMesa();

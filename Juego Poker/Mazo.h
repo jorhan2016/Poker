@@ -6,14 +6,14 @@ using namespace std;
 Class Mazo {
 
 private:
-	Carta misCartas[52];
+	vector<Carta> misCartas();
 	
 public:
 
 	Mazo();
 	~Mazo();
 	void setBaraja();
-	Carta[52] getBaraja();
+	vector<Carta> getBaraja();
 	void revolverCartas();
 
 }

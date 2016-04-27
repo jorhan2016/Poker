@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Mesa.h"
 
+
 Mesa::Mesa() {
 
 }
@@ -9,7 +10,7 @@ Mesa::~Mesa() {
 
 }
 
-void Mesa::setCartasComunitarias(Carta cartasComunitarias[]) {
+void Mesa::setCartasComunitarias(vector<Carta> cartasComunitarias) {
 
 	this->cartasComunitarias = cartasComunitarias;
 	
@@ -35,7 +36,7 @@ void Mesa::setDineroMesa(int dineroMesa) {
 
 }
 
-Carta[] Mesa::getCartasComunitarias() {
+vector<Carta> Mesa::getCartasComunitarias() {
 
 	return cartasComunitarias;
 
