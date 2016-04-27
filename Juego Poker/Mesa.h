@@ -1,9 +1,9 @@
 #pragma once
 #include <vector>
-
+#include "Carta.h"
 using namespace std;
 
-Class Mesa {
+class Mesa {
 
 private:
 
@@ -23,4 +23,4 @@ public:
 	int getDineroMesa();
 	void limpiarDineroMesa();
 
-}
+};
