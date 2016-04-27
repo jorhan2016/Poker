@@ -1,31 +1,26 @@
-#ifndef MESA_H
-#define	MESA_H
-#include <sstream>
+#pragma once
+#include <vector>
+
 using namespace std;
 
-class Mesa {
-
-public:
-
-	int CANTIDAD_CARTAS_COMUNITARIAS_VISIBLES_INICIAL = 3;
-	Mesa();
-	void setComunitarias(int CANTIDAD_CARTAS_COMUNITARIAS_VISIBLES_INICIAL);
-	Carta[] getComunitarias();
-	void setApuesta();
-	int getApuesta();
-	void añadirApuesta(int cantidad);
-	void setAcumulado(int cantidadAcumulada);
-	int getAcumulado();
-
-	virtual ~Mesa();
+Class Mesa {
 
 private:
 
-	int CANTIDAD_CARTAS_COMUNITARIAS_TOTAL = 5;
-	Carta[] cartasComunitarias;
-	int cantidadCartasVisibles;
+	vector<Carta> cartasComunitarias;
 	int apuesta;
-	int cantidadDineroAcumulado;
-	Mazo elMazo;
+	int dineroMesa;
+
+public:
+
+	Mesa();
+	~Mesa();
+	void setCartasComunitarias(vector<Carta>);
+	void setApuesta(int, int);
+	void setDineroMesa(int);
+	vector<Carta> getCartasComunitarias();
+	int getApuesta();
+	int getDineroMesa();
+	void limpiarDineroMesa();
 
 }

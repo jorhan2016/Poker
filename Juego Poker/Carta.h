@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 #include <iostream>
@@ -6,24 +7,30 @@
 #include <sstream>
 >>>>>>> denis
 using namespace std;
+=======
+>>>>>>> denis
 #pragma once
+#include <iostream>
 
-class Carta {
+using namespace std;
 
-public:
-
-	carta();
-	void setNumeroCarta();
-	int getNumeroCarta();
-	void setPaloCarta();
-	int getPaloCarta();
-
-	virtual ~Carta();
-
+Class Carta{
 
 private:
 
-	int numeroCarta;
-	int paloCarta;
-};
+	int palo;
+	int numero;
 
+public:
+
+	Carta(int, int);
+	~Carta();
+	void setPalo(int);
+	int getPalo();
+	void setNumero(int);
+	int getNumero();
+
+
+
+
+}
