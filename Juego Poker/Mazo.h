@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Class Mazo {
+class Mazo {
 
 private:
 	vector<Carta> misCartas();
@@ -16,4 +16,4 @@ public:
 	vector<Carta> getBaraja();
 	void revolverCartas();
 
-}
+};
