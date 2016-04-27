@@ -1,5 +1,10 @@
 
+<<<<<<< HEAD
 #include <iostream>
+=======
+#define	CARTA_H
+#include <sstream>
+>>>>>>> denis
 using namespace std;
 #pragma once
 
