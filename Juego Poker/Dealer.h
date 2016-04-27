@@ -1,28 +1,38 @@
-#ifndef DEALER_H
-#define	DEALER_H
-#include <sstream>
-#include <vector>
+#pragma once
+#include "Mazo.h"
+#include "Carta.h"
+#include "Jugador.h"
+#include "Combinaciones.h"
+#include <time.h>
+
 using namespace std;
 
 class Dealer {
 
 public:
 
-	int CTD_CARTAS_POR_JUGADOR = 2;
-	Dealer(Mesa mesa);
-	void generarApuestaInicial();
-	void limpiarAcumulado();
-	void colocarCartasComunitarias();
-	void revelarCartas();
-	Carta sacarCartas(int cantidadCartas);
-	vector <Carta> repartirCartasJugador();
+	Dealer();
 	virtual ~Dealer();
+	Dealer(Dealer& otro);
+
+	void setCiega();
+	void setMazo();
+	void setDineroTurno(int dinero);
+	void setContadorMazo();
+	int getCiega();
+	Mazo getMazo();
+	int getDineroTurno();
+	int getContadorMazo();
+	void limpiarDineroTurno();
+	Carta colocarCartaComunitaria();
+	vector<Carta> repartirCartasJugador();
+	vector<Jugador> determinarGanador(vector<Jugador> jugadores, vector<Carta> cartasComunitarias);
 
 private:
 
-	int APUESTA_MINIMA = 10; *En realidad este valor es especificado
-		int APUESTA_MAXIMA = 250;
-	Mesa laMesa;
-	Mazo elMazo;
-	int apuestaInicial;
-}
+	int ciega;
+	Mazo mazo;
+	int dineroTurno;
+	int contadorMazo;//BORRAR
+
+};
