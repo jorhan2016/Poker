@@ -11,11 +11,11 @@ Jugador::~Jugador()
 {
 }
 
-void Jugador::setCartasJugador(vector<Carta> cartasrepartidas) {
+void Jugador::setCartasJugador(list<Carta> cartasrepartidas) {
 	cartasJugador = cartasrepartidas;
 }
 
-vector<Carta> Jugador::getCartasJugador()
+list <Carta> Jugador::getCartasJugador()
 {
 	return cartasJugador;
 }
@@ -30,22 +30,20 @@ int Jugador::getDinero()
 	return dinero;
 }
 
-void Jugador::reducirDinero(int rebaja) 
+void Jugador::reducirDinero(int rebaja)
 {
-<<<<<<< HEAD
+
 	dinero = dinero - rebaja;
-=======
-	dinero = dinero + rebaja;
->>>>>>> 1606f901c953aaf186b1a6f71cf822fc472f0975
+
 }
 
 bool Jugador::decidirApuesta(int apuesta, int numeroMano, int numTurno) //agregué el segundo y tercer parametro, creo que se necesita. es mejor para saber que mano tiene cada jugador y el turno en que van (lo q se obtiene de Combinacion) ya que son casos dependientes de eso.
 {
 	bool b;
 	if (numTurno = 2) {
-		if ((numeroMano == 1 || numeroMano == 2) & apuesta <= 55) 
-			b ;
-		if ((numeroMano == 3 || numeroMano == 4) & apuesta <= 110) 
+		if ((numeroMano == 1 || numeroMano == 2) & apuesta <= 55)
+			b;
+		if ((numeroMano == 3 || numeroMano == 4) & apuesta <= 110)
 			b;
 		if ((numeroMano == 5 || numeroMano == 6) & apuesta <= 165)
 			b;
@@ -53,8 +51,9 @@ bool Jugador::decidirApuesta(int apuesta, int numeroMano, int numTurno) //agregu
 			b;
 		if ((numeroMano == 9 || numeroMano == 10) & apuesta <= 275)
 			b;
-	}	else  b = false;
-	
+	}
+	else  b = false;
+
 	if (numTurno = 3) {
 		if ((numeroMano == 1 || numeroMano == 2) & apuesta <= 56)
 			b;
@@ -66,8 +65,9 @@ bool Jugador::decidirApuesta(int apuesta, int numeroMano, int numTurno) //agregu
 			b;
 		if ((numeroMano == 9 || numeroMano == 10) & apuesta <= 302)
 			b;
-	}	else  b = false ;
-	
+	}
+	else  b = false;
+
 	if (numTurno = 4) {
 		if ((numeroMano == 1 || numeroMano == 2) & apuesta <= 57)
 			b;
@@ -79,9 +79,10 @@ bool Jugador::decidirApuesta(int apuesta, int numeroMano, int numTurno) //agregu
 			b;
 		if ((numeroMano == 9 || numeroMano == 10) & apuesta <= 332)
 			b;
-	}	else b = false;
+	}
+	else b = false;
 
-		return b;
+	return b;
 }
 
 
@@ -93,7 +94,19 @@ bool Jugador::salirJuego(int apuesta) // en el  diseño no recibe parametros, per
 	bool b;
 	if (dinero >= apuesta) {
 		b;
-	}else b = false;
+	}
+	else b = false;
 
 	return b;
+}
+
+void Jugador::imprimirLista(list <Carta> pareja) // es para probar el set y get .
+{
+	Carta carta2 = pareja.back();
+	Carta carta1 = pareja.front();
+
+	cout << "Carta1 (P1,B1): (" << carta1.getPalo() << "," << carta1.getNumero() << ")" << endl;
+	cout << "Carta2 (P2,B2): (" << carta2.getPalo() << "," << carta2.getNumero() << ")" << endl;
+
+
 }

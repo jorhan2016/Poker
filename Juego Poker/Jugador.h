@@ -1,32 +1,31 @@
 
+
 #include <iostream>
 #include "Carta.h"
 
-#include <vector>
+#include <list>
 using namespace std;
 
 class Jugador {
 
 private:
-	vector<Carta> cartasJugador;
+	list<Carta> cartasJugador;
 	int dinero;
 
 public:
 
-	void Jugador::setCartasJugador(vector<Carta>);
-	vector<Carta> getCartasJugador();
+	void Jugador::setCartasJugador(list<Carta>);
+	list <Carta> getCartasJugador();
 	void setDinero();
 	int getDinero();
 	void reducirDinero(int);
 	bool decidirApuesta(int, int, int); //mejor q reciba 3 arametros, ver .cpp
 	bool salirJuego(int); //en el  diseño no recibe parametros, pero debe recibir la apuesta.
 
-	
-	
-	Jugador::Jugador()
-	{
-	}
-	Jugador::~Jugador()
-	{
-	}
+
+	void imprimirLista(list <Carta>); //para el main pruebas
+
+
+	Jugador::Jugador();
+	Jugador::~Jugador();
 };

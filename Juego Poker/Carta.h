@@ -13,13 +13,14 @@ private:
 public:
 
 	Carta(int, int);
+	Carta();
 	~Carta();
 	void setPalo(int);
 	int getPalo();
 	void setNumero(int);
 	int getNumero();
 
-
+	
 
 
 };
