@@ -1,19 +1,19 @@
 #pragma once
-#include <vector>
+#include <list>
 
 using namespace std;
 
 Class Mazo {
 
 private:
-	vector<Carta> misCartas();
+	list<Carta*> misCartas();
 	
 public:
 
 	Mazo();
 	~Mazo();
 	void setBaraja();
-	vector<Carta> getBaraja();
+	list<Carta> getBaraja();
 	void revolverCartas();
-
+	
 }

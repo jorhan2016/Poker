@@ -20,7 +20,7 @@ void Mazo::setBaraja() {
 
 		for (int b = 0; b <= 13; b++) {
 
-			this->misCartas[c] = new Carta(b, a);
+			this->misCartas.push_front(new Carta(b, a));
 			c++;
 
 		}
@@ -29,7 +29,7 @@ void Mazo::setBaraja() {
 
 }
 
-Carta[] Mazo::getBaraja() {
+list<Carta*> Mazo::getBaraja() {
 
 	return this->misCartas;
 
