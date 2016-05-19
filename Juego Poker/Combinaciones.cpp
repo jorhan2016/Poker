@@ -28,21 +28,22 @@ int Combinaciones::getNumeroTurno()
 	return numeroTurno;
 }
 
-vector<Carta> Combinaciones::getEscalera()
+list<Carta> Combinaciones::getEscalera()
 {
 	return escalera;
 }
 
-void Combinaciones::setCartas(vector<Carta> jugador, vector<Carta> comunitarias)
+void Combinaciones::setCartas(list<Carta> jugador, list<Carta> comunitarias)
 {
 	for (int i = 0; i < jugador.size(); i++)
 	{
-		comunitarias.push_back(jugador[i]);
+		comunitarias.push_back(jugador.front());
+		jugador.pop_front();
 	}
 	cartas = comunitarias;
 }
 
-vector<Carta> Combinaciones::getCartas()
+list<Carta> Combinaciones::getCartas()
 {
 	return cartas;
 }
@@ -53,14 +54,15 @@ void Combinaciones::ordenarCartas()
 	while (!ordenado)
 	{
 		int contador = 0;
-		for (int i = 0; i < cartas.size() - 1; i++)
+		for (list<Carta>::iterator it = cartas.begin(); it != cartas.end(); ++it)
 		{
-			if (cartas[i].getNumeroCarta() > cartas[i + 1].getNumeroCarta())
+			list<Carta>::iterator it2 = ++it;
+			if ((*it).getNumero() > (*it2).getNumero())
 			{
 				contador++;
-				Carta temporal = cartas[i];
-				cartas[i] = cartas[i + 1];
-				cartas[i + 1] = temporal;
+				Carta temporal = *it;
+				*it = *it2;
+				*it2 = temporal;
 			}
 		}
 		if (contador == 0)
@@ -73,12 +75,12 @@ void Combinaciones::ordenarCartas()
 bool Combinaciones::verificarColor()
 {
 	bool booleano = false;
-	for (int i = 0; i < cartas.size(); i++)
+	for (list<Carta>::iterator it = cartas.begin(); it != cartas.end(); ++it)
 	{
 		int contador = 0;
-		for (int j = 0; j < cartas.size(); j++)
+		for (list<Carta>::iterator it2 = cartas.begin(); it2 != cartas.end(); ++it2)
 		{
-			if (cartas[i].getPaloCarta == cartas[j].getPaloCarta)
+			if ((*it).getPalo() == (*it2).getPalo())
 			{
 				contador++;
 			}
@@ -94,23 +96,25 @@ bool Combinaciones::verificarColor()
 
 bool Combinaciones::verificarEscalera()
 {
-	return Combinaciones::verificarEscalera(1);
+	return Combinaciones::verificarEscalera(cartas.begin++);
 }
 
-bool Combinaciones::verificarEscalera(int inicio)
+bool Combinaciones::verificarEscalera(list<Carta>::iterator inicio)
 {
 	bool booleano = false;
-	if (inicio < cartas.size())
+	if (inicio != cartas.end())
 	{
+		list<Carta>::iterator anteriorInicio = --inicio;
 		int contador = 0;
 		escalera.clear;
-		escalera.push_back(cartas[inicio - 1]);
-		for (int i = inicio; i < cartas.size(); i++)
+		escalera.push_back(*anteriorInicio);
+		for (list<Carta>::iterator it = inicio; it != cartas.end(); ++it)
 		{
-			if (cartas[i].getNumeroCarta() == cartas[i - 1].getNumeroCarta() + 1)
+			list<Carta>::iterator it2 = --it;
+			if ((*it).getNumero() == (*it2).getNumero() + 1)
 			{
 				contador++;
-				escalera.push_back(cartas[i]);
+				escalera.push_back((*it));
 				if (contador >= numeroTurno)
 				{
 					booleano = true;
@@ -119,7 +123,7 @@ bool Combinaciones::verificarEscalera(int inicio)
 			}
 			else
 			{
-				verificarEscalera(i + 1);
+				verificarEscalera(it++);
 			}
 		}
 	}
@@ -128,32 +132,34 @@ bool Combinaciones::verificarEscalera(int inicio)
 
 int Combinaciones::obtenerCartaAlta()
 {
-	return cartas[cartas.size() - 1].getNumeroCarta();
+	list<Carta>::iterator it = cartas.end();
+	return (*--it).getNumero();
 }
 
-vector<vector<int>> Combinaciones::obtenerRepeticiones()
+list<list<int>> Combinaciones::obtenerRepeticiones()
 {
-	vector<vector<int>> repeticiones;
-	return Combinaciones::obtenerRepeticiones(1, repeticiones);
+	list<list<int>> repeticiones;
+	return Combinaciones::obtenerRepeticiones(cartas.begin++, repeticiones);
 }
 
-vector<vector<int>> Combinaciones::obtenerRepeticiones(int inicio, vector<vector<int>> matriz)
+list<list<int>> Combinaciones::obtenerRepeticiones(list<Carta>::iterator inicio, list<list<int>> matriz)
 {
-	if (inicio < cartas.size())
+	if (inicio != cartas.end())
 	{
 		int contador = 1;
-		for (int i = inicio; i < cartas.size(); i++)
+		for (list<Carta>::iterator it = inicio; it != cartas.end(); ++it)
 		{
-			vector<int> auxiliar;
-			if (cartas[i].getNumeroCarta() == cartas[i - 1].getNumeroCarta())
+			list<int> auxiliar;
+			list<Carta>::iterator it2 = --it;
+			if ((*it).getNumero() == (*it2).getNumero())
 			{
 				contador++;
-				auxiliar.assign(cartas[i - 1].getNumeroCarta(), contador);
+				auxiliar.assign((*it2).getNumero(), contador);
 			}
 			else
 			{
 				matriz.push_back(auxiliar);
-				Combinaciones::obtenerRepeticiones(i + 1, matriz);
+				Combinaciones::obtenerRepeticiones(++it, matriz);
 			}
 		}
 	}
@@ -170,7 +176,7 @@ void Combinaciones::setNumeroMano()
 	{
 		if (Combinaciones::verificarColor())
 		{
-			if (escalera[0].getNumeroCarta() == 10)
+			if (escalera.begin.getNumeroCarta() == 10)
 			{
 				numeroMano = 10;
 			}
@@ -186,12 +192,13 @@ void Combinaciones::setNumeroMano()
 	}
 	else
 	{
-		vector<vector<int>> matrizRepeticiones = Combinaciones::obtenerRepeticiones();
+		list<list<int>> matrizRepeticiones = Combinaciones::obtenerRepeticiones();
 		if (matrizRepeticiones.size() != 0)
 		{
-			vector<int> mayorRepeticion = { 0, 0 };
+			list<int> mayorRepeticion = { 0, 0 };
 			for (int i = 0; i < matrizRepeticiones.size(); i++)
 			{
+				//PREGUNTAR COMO ACCEDER AL SEGUNDO PARAMETRO DE UNA LISTA DE LISTAS MEDIANTE ITERADORES
 				if (matrizRepeticiones[i][1] > mayorRepeticion[1])
 				{
 					mayorRepeticion = matrizRepeticiones[i];

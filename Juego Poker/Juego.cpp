@@ -6,7 +6,12 @@ Juego::Juego()
 {
 }
 
-
 Juego::~Juego()
 {
 }
+
+void Juego::iniciarJuego()
+{
+
+}
+

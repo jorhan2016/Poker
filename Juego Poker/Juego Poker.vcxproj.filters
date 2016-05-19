@@ -27,9 +27,6 @@
     <ClInclude Include="Carta.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Combinaciones.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="Dealer.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
@@ -45,7 +42,7 @@
     <ClInclude Include="Mesa.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Reglas.h">
+    <ClInclude Include="Combinaciones.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
@@ -57,9 +54,6 @@
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
     <ClCompile Include="Carta.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="Combinaciones.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
     <ClCompile Include="Dealer.cpp">
@@ -77,7 +71,7 @@
     <ClCompile Include="Mesa.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-    <ClCompile Include="Reglas.cpp">
+    <ClCompile Include="Combinaciones.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
   </ItemGroup>

@@ -24,15 +24,14 @@ public:
 	int getContadorMazo();
 	void limpiarDineroTurno();
 	Carta colocarCartaComunitaria();
-	vector<Carta> repartirCartasJugador();
-	vector<Jugador> determinarGanador(vector<Jugador> jugadores, vector<Carta> cartasComunitarias);
+	list<Carta> repartirCartasJugador();
+	list<Jugador> determinarGanador(list<Jugador> jugadores, list<Carta> cartasComunitarias);
 
 private:
 
 	int ciega;
 	Mazo mazo;
 	int dineroTurno;
-	int contadorMazo;//BORRAR
 
 };
 

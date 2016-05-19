@@ -15,7 +15,6 @@ Dealer::Dealer(Dealer& otro)
 	this->ciega = otro.ciega;
 	this->mazo = otro.mazo;
 	this->dineroTurno = otro.dineroTurno;
-	this->contadorMazo = otro.contadorMazo;
 }
 
 void Dealer::setCiega()
@@ -35,11 +34,6 @@ void Dealer::setDineroTurno(int dinero)
 	dineroTurno += dinero;
 }
 
-void Dealer::setContadorMazo()
-{
-	contadorMazo = 0;
-}
-
 int Dealer::getCiega()
 {
 	return ciega;
@@ -55,11 +49,6 @@ int Dealer::getDineroTurno()
 	return dineroTurno;
 }
 
-int Dealer::getContadorMazo()
-{
-	return contadorMazo;
-}
-
 void Dealer::limpiarDineroTurno()
 {
 	dineroTurno = 0;
@@ -67,51 +56,60 @@ void Dealer::limpiarDineroTurno()
 
 Carta Dealer::colocarCartaComunitaria()
 {
-	//LLAMAR METODO devolverPrimeraCrta y luego al metodo borrarPrimeraCarta
-	return mazo[contadorMazo];
-	contadorMazo++;
+	//NECESITO METODO PARA VER PRIMERA CARTA DE MAZO Y BORRARLA
+	return mazo.front();
+	mazo.pop_front();
 }
 
-vector<Carta> Dealer::repartirCartasJugador()
+list<Carta> Dealer::repartirCartasJugador()
 {
-	//LLAMAR METODO devolverPrimeraCrta y luego al metodo borrarPrimeraCarta
-	vector<Carta> cartasJugador;
-	cartasJugador.assign(mazo[contadorMazo]);
-	contadorMazo++;
-	cartasJugador.push_back(mazo[contadorMazo]);
-	contadorMazo++;
+	//NECESITO METODO PARA VER PRIMERA CARTA DE MAZO Y BORRARLA
+	list<Carta> cartasJugador;
+	cartasJugador.push_front(mazo.front());
+	mazo.pop_front();
+	cartasJugador.push_front(mazo.front());
+	mazo.pop_front();
 	return cartasJugador;
 }
 
-vector<Jugador> Dealer::determinarGanador(vector<Jugador> jugadores, vector<Carta> cartasComunitarias)
+list<Jugador> Dealer::determinarGanador(list<Jugador> jugadores, list<Carta> cartasComunitarias)
 {
+	list<Jugador> jugadores2;
 	Combinaciones combinacion;
 	combinacion.setNumeroTurno(4);
-	vector<int> manoJugador;
+	list<int> manoJugador;
+	list<int> manoJugador2;
+	list<int> manoJugador3;
 	int manoGanadora = 0;
-	vector<Jugador> jugadorGanador;
-	vector<vector<Carta>> cartasJugadorGanador;
+	list<Jugador> jugadorGanador;
+	list<list<Carta>> cartasJugadorGanador;
 	int contador = 0;
 	for (int i = 0; i < jugadores.size(); i++)
 	{
-		combinacion.setCartas(jugadores[i].getCartasJugador(), cartasComunitarias);
+		combinacion.setCartas(jugadores.front().getCartasJugador(), cartasComunitarias);
 		combinacion.setNumeroMano();
 		manoJugador.push_back(combinacion.getNumeroMano());
+		jugadores2.push_front(jugadores.front());
+		jugadores.pop_front();
 	}
 	for (int i = 0; i < manoJugador.size(); i++)
 	{
-		if (manoJugador[i] > manoGanadora)
+		if (manoJugador.front() > manoGanadora)
 		{
-			manoGanadora = manoJugador[i];
+			manoGanadora = manoJugador.front();
 		}
+		manoJugador2.push_front(manoJugador.front());
+		manoJugador.pop_front();
 	}
-	for (int i = 0; i < manoJugador.size(); i++)
+	for (int i = 0; i < manoJugador2.size(); i++)
 	{
-		if (manoJugador[i] == manoGanadora)
+		if (manoJugador2.front() == manoGanadora)
 		{
-			jugadorGanador.push_back(jugadores[i]);
+			jugadorGanador.push_back(jugadores2.front());
 			contador++;
 		}
+		manoJugador3.push_front(manoJugador2.front());
+		manoJugador2.pop_front();
 	}
 	if (contador == 1)
 	{
@@ -119,40 +117,45 @@ vector<Jugador> Dealer::determinarGanador(vector<Jugador> jugadores, vector<Cart
 	}
 	else
 	{
-		Carta cartaVacia;
-		cartaVacia.setNumero(0);
-		cartaVacia.setPalo(0);
-		vector<Carta> auxiliar;
+		Carta cartaVacia(0, 0);
+		list<Carta> auxiliar;
 		auxiliar.push_back(cartaVacia);
-		vector<Jugador> jugadorGanadorFinal;
+		list<Jugador> jugadorGanadorFinal;
+		list<Jugador> jugadorGanador2;
 		manoJugador.clear();
+		manoJugador2.clear();
 		manoGanadora = 0;
 		for (int i = 0; i < jugadorGanador.size(); i++)
 		{
-			combinacion.setCartas(jugadorGanador[i].getCartasJugador(), auxiliar);
+			combinacion.setCartas(jugadorGanador.front().getCartasJugador(), auxiliar);
 			manoJugador.push_back(combinacion.obtenerCartaAlta());
+			jugadorGanador2.push_front(jugadorGanador.front());
+			jugadorGanador.pop_front();
 		}
 
 		for (int j = 0; j < manoJugador.size(); j++)
 		{
-			if (manoJugador[j] > manoGanadora)
+			if (manoJugador.front() > manoGanadora)
 			{
-				manoGanadora = manoJugador[j];
-
+				manoGanadora = manoJugador.front();
 			}
+			manoJugador2.push_front(manoJugador.front());
+			manoJugador.pop_front();
 		}
 
 		for (int j = 0; j < manoJugador.size(); j++)
 		{
-			if (manoJugador[j] == manoGanadora)
+			if (manoJugador2.front() == manoGanadora)
 			{
-				jugadorGanadorFinal.push_back(jugadorGanador[j]);
+				jugadorGanadorFinal.push_back(jugadorGanador2.front());
 			}
+			manoJugador2.pop_front();
 		}
 
 		return jugadorGanadorFinal;
 	}
 }
+
 
 
 

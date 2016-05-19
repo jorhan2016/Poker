@@ -1,6 +1,6 @@
 #pragma once
 #include "Carta.h"
-#include <vector>
+
 using namespace std;
 
 class Combinaciones
@@ -12,24 +12,24 @@ public:
 
 	void setNumeroTurno(int turno);
 	int getNumeroTurno();
-	vector<Carta> getEscalera();
-	void setCartas(vector<Carta> jugador, vector<Carta> comunitarias);
-	vector<Carta> getCartas();
+	list<Carta> getEscalera();
+	void setCartas(list<Carta> jugador, list<Carta> comunitarias);
+	list<Carta> getCartas();
 	void ordenarCartas();
 	bool verificarColor();
 	bool verificarEscalera();
 	int obtenerCartaAlta();
-	vector<vector<int>> obtenerRepeticiones();
+	list<list<int>> obtenerRepeticiones();
 	void setNumeroMano();
 	int getNumeroMano();
 
 private:
-	vector<Carta> cartas;
-	vector<Carta> escalera;
+	list<Carta> cartas;
+	list<Carta> escalera;
 	int numeroMano;
 	int numeroTurno;
-	vector<vector<int>> obtenerRepeticiones(int inicio, vector<vector<int>> matriz);
-	bool verificarEscalera(int inicio);
+	list<list<int>> obtenerRepeticiones(list<Carta>::iterator inicio, list<list<int>> matriz);
+	bool verificarEscalera(list<Carta>::iterator inicio);
 };
 
 
