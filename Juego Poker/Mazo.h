@@ -1,9 +1,8 @@
 #pragma once
-#include <list>
 
 using namespace std;
 
-Class Mazo {
+class Mazo {
 
 private:
 	list<Carta*> misCartas();
@@ -16,4 +15,4 @@ public:
 	list<Carta> getBaraja();
 	void revolverCartas();
 	
-}
+};

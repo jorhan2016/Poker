@@ -196,26 +196,33 @@ void Combinaciones::setNumeroMano()
 		if (matrizRepeticiones.size() != 0)
 		{
 			list<int> mayorRepeticion = { 0, 0 };
-			for (int i = 0; i < matrizRepeticiones.size(); i++)
+			for (list<list<int>>::iterator it = matrizRepeticiones.begin; it != matrizRepeticiones.end(); ++it)
 			{
-				//PREGUNTAR COMO ACCEDER AL SEGUNDO PARAMETRO DE UNA LISTA DE LISTAS MEDIANTE ITERADORES
-				if (matrizRepeticiones[i][1] > mayorRepeticion[1])
+				list<int >::iterator it2 = (*it).begin();
+				++it2;
+				list<int >::iterator it3 = mayorRepeticion.begin();
+				++it3;
+				if ((*it2) > (*it3))
 				{
-					mayorRepeticion = matrizRepeticiones[i];
+					mayorRepeticion = (*it);
 				}
 			}
-			if (mayorRepeticion[1] == 4)
+			list<int >::iterator it3 = mayorRepeticion.begin();
+			list<int >::iterator it5 = ++it3;
+			if ((*it5) == 4)
 			{
 				numeroMano = 8;
 			}
 			else
 			{
-				if (mayorRepeticion[1] == 3)
+				if ((*it5) == 3)
 				{
 					numeroMano = 4;
-					for (int i = 0; i < matrizRepeticiones.size(); i++)
+					for (list<list<int>>::iterator it = matrizRepeticiones.begin; it != matrizRepeticiones.end(); ++it)
 					{
-						if (matrizRepeticiones[i][1] == 2)
+						list<int >::iterator it2 = (*it).begin();
+						++it2;
+						if ((*it2) == 2)
 						{
 							numeroMano = 7;
 							break;
@@ -225,10 +232,11 @@ void Combinaciones::setNumeroMano()
 				else
 				{
 					numeroMano = 2;
-					for (int i = 0; i < matrizRepeticiones.size(); i++)
+					for (list<list<int>>::iterator it = matrizRepeticiones.begin; it != matrizRepeticiones.end(); ++it)
 					{
-
-						if (matrizRepeticiones[i][0] != mayorRepeticion[0] && matrizRepeticiones[i][1] == 2)
+						list<int >::iterator it2 = (*it).begin();
+						list<int >::iterator it4 = ++it2;
+						if ((*it2) != (*it3) && (*it4) == 2)
 						{
 							numeroMano = 3;
 							break;

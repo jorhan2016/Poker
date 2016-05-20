@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Class Carta{
+class Carta{
 
 private:
 
@@ -22,4 +22,4 @@ public:
 
 
 
-}
+};

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Dealer.h"
-
+#include "Carta.h"
+#include "Mazo.h"
 
 Dealer::Dealer()
 {
