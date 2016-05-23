@@ -1,25 +1,25 @@
-#ifndef CARTA_H
-#define	CARTA_H
-#include <sstream>
-using namespace std;
 #pragma once
+#include <iostream>
 
-class Carta {
+using namespace std;
 
-public:
-
-	carta();
-	void setNumeroCarta();
-	int getNumeroCarta();
-	void setPaloCarta();
-	int getPaloCarta();
-
-	virtual ~Carta();
-
+class Carta{
 
 private:
 
-	int numeroCarta;
-	int paloCarta;
-};
+	int palo;
+	int numero;
 
+public:
+
+	Carta(int, int);
+	~Carta();
+	void setPalo(int);
+	int getPalo();
+	void setNumero(int);
+	int getNumero();
+
+
+
+
+};

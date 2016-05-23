@@ -13,3 +13,7 @@
 
 
 // TODO: mencionar aquí los encabezados adicionales que el programa necesita
+#include <list>
+#include <time.h>
+#include <stdlib.h>
+#include <iostream>
