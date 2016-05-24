@@ -19,17 +19,17 @@ public:
 	bool verificarColor();
 	bool verificarEscalera();
 	int obtenerCartaAlta();
-	list<list<int>> obtenerRepeticiones();
+	void setMatrizRepeticiones();
+	list<list<int>> getMatrizRepeticiones();
 	void setNumeroMano();
 	int getNumeroMano();
 
 private:
 	list<Carta> cartas;
 	list<Carta> escalera;
+	list<list<int>> matrizRepeticiones;
 	int numeroMano;
 	int numeroTurno;
-	list<list<int>> obtenerRepeticiones(list<Carta>::iterator inicio, list<list<int>> matriz);
+	void setMatrizRepeticiones(list<Carta>::iterator inicio, list<list<int>> matriz);
 	bool verificarEscalera(list<Carta>::iterator inicio);
 };
-
-

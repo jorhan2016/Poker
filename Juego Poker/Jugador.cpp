@@ -106,3 +106,4 @@ void Jugador::imprimirLista(list <Carta> pareja) // es para probar el set y get 
 
 
 }
+

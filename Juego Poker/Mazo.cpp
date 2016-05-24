@@ -24,7 +24,7 @@ void Mazo::setBaraja() {
 			c++;
 
 		}
-		
+
 	}
 
 }

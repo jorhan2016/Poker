@@ -1,5 +1,5 @@
-#include "stdafx.h"
 #include "Carta.h"
+#include "stdafx.h"
 
 
 Carta::Carta(int palo, int numero) {

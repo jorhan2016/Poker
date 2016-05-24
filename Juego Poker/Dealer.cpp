@@ -85,7 +85,8 @@ list<Jugador> Dealer::determinarGanador(list<Jugador> jugadores, list<Carta> car
 	list<Jugador> jugadorGanador;
 	list<list<Carta>> cartasJugadorGanador;
 	int contador = 0;
-	for (int i = 0; i < jugadores.size(); i++)
+	int tamanoJugadores = jugadores.size();
+	for (int i = 0; i < tamanoJugadores; i++)
 	{
 		combinacion.setCartas(jugadores.front().getCartasJugador(), cartasComunitarias);
 		combinacion.setNumeroMano();
@@ -93,7 +94,8 @@ list<Jugador> Dealer::determinarGanador(list<Jugador> jugadores, list<Carta> car
 		jugadores2.push_front(jugadores.front());
 		jugadores.pop_front();
 	}
-	for (int i = 0; i < manoJugador.size(); i++)
+	int tamanoManoJugador = manoJugador.size();
+	for (int i = 0; i < tamanoManoJugador; i++)
 	{
 		if (manoJugador.front() > manoGanadora)
 		{
@@ -102,7 +104,8 @@ list<Jugador> Dealer::determinarGanador(list<Jugador> jugadores, list<Carta> car
 		manoJugador2.push_front(manoJugador.front());
 		manoJugador.pop_front();
 	}
-	for (int i = 0; i < manoJugador2.size(); i++)
+	int tamanoManoJugador2 = manoJugador2.size();
+	for (int i = 0; i < tamanoManoJugador2; i++)
 	{
 		if (manoJugador2.front() == manoGanadora)
 		{
@@ -126,14 +129,15 @@ list<Jugador> Dealer::determinarGanador(list<Jugador> jugadores, list<Carta> car
 		manoJugador.clear();
 		manoJugador2.clear();
 		manoGanadora = 0;
-		for (int i = 0; i < jugadorGanador.size(); i++)
+		int tamanoJugadorGanador = jugadorGanador.size();
+		for (int i = 0; i < tamanoJugadorGanador; i++)
 		{
 			combinacion.setCartas(jugadorGanador.front().getCartasJugador(), auxiliar);
 			manoJugador.push_back(combinacion.obtenerCartaAlta());
 			jugadorGanador2.push_front(jugadorGanador.front());
 			jugadorGanador.pop_front();
 		}
-
+		tamanoManoJugador = manoJugador.size();
 		for (int j = 0; j < manoJugador.size(); j++)
 		{
 			if (manoJugador.front() > manoGanadora)
@@ -143,8 +147,8 @@ list<Jugador> Dealer::determinarGanador(list<Jugador> jugadores, list<Carta> car
 			manoJugador2.push_front(manoJugador.front());
 			manoJugador.pop_front();
 		}
-
-		for (int j = 0; j < manoJugador.size(); j++)
+		tamanoManoJugador = manoJugador.size();
+		for (int j = 0; j < tamanoManoJugador; j++)
 		{
 			if (manoJugador2.front() == manoGanadora)
 			{
@@ -156,7 +160,3 @@ list<Jugador> Dealer::determinarGanador(list<Jugador> jugadores, list<Carta> car
 		return jugadorGanadorFinal;
 	}
 }
-
-
-
-
