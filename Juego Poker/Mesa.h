@@ -1,9 +1,15 @@
 #pragma once
 #include <vector>
-
+#include "Carta.h"
 using namespace std;
 
 Class Mesa {
+
+private:
+
+	vector<Carta> cartasComunitarias;
+	int apuesta;
+	int dineroMesa;
 
 private:
 
@@ -23,4 +29,4 @@ public:
 	int getDineroMesa();
 	void limpiarDineroMesa();
 
-}
+};

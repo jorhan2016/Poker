@@ -28,7 +28,6 @@ void Mesa::setApuesta(int cantidadCiega, int turno) {
 		this->apuesta = cantidadCiega*(1 + 0.1*(turno-1));
 
 	}
-
 }
 
 void Mesa::setDineroMesa(int dineroMesa) {
@@ -59,3 +58,4 @@ void Mesa::limpiarDineroMesa() {
 	this->dineroMesa = 0;
 
 }
+

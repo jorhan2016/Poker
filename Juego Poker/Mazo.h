@@ -1,13 +1,14 @@
 #pragma once
 #include "Carta.h"
+#include <vector>
 
 using namespace std;
 
 class Mazo {
 
 private:
-	list<Carta*> misCartas();
 
+	list<Carta*> misCartas();
 public:
 
 	Mazo();
@@ -17,4 +18,3 @@ public:
 	void revolverCartas();
 
 };
-
