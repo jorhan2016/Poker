@@ -11,7 +11,7 @@ private:
 
 public:
 
-	void Jugador::setCartasJugador(list<Carta>);
+	void setCartasJugador(list<Carta>);
 	list <Carta> getCartasJugador();
 	void setDinero();
 	int getDinero();
@@ -23,6 +23,6 @@ public:
 	void imprimirLista(list <Carta>); //para el main pruebas
 
 
-	Jugador::Jugador();
-	Jugador::~Jugador();
+	Jugador();
+	~Jugador();
 };

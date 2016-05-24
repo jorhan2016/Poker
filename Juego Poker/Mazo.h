@@ -1,4 +1,5 @@
 #pragma once
+#include "Carta.h"
 
 using namespace std;
 
@@ -6,7 +7,7 @@ class Mazo {
 
 private:
 	list<Carta*> misCartas();
-	
+
 public:
 
 	Mazo();
@@ -14,5 +15,6 @@ public:
 	void setBaraja();
 	list<Carta> getBaraja();
 	void revolverCartas();
-	
+
 };
+
