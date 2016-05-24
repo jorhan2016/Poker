@@ -1,19 +1,14 @@
 #pragma once
-#include <vector>
+#include <list>
 #include "Carta.h"
+
 using namespace std;
 
-Class Mesa {
+class Mesa {
 
 private:
 
-	vector<Carta> cartasComunitarias;
-	int apuesta;
-	int dineroMesa;
-
-private:
-
-	vector<Carta> cartasComunitarias;
+	list<Carta*> cartasComunitarias;
 	int apuesta;
 	int dineroMesa;
 
@@ -21,10 +16,10 @@ public:
 
 	Mesa();
 	~Mesa();
-	void setCartasComunitarias(vector<Carta>);
+	void setCartasComunitarias(list<Carta*>);
 	void setApuesta(int, int);
 	void setDineroMesa(int);
-	vector<Carta> getCartasComunitarias();
+	list<Carta*> getCartasComunitarias();
 	int getApuesta();
 	int getDineroMesa();
 	void limpiarDineroMesa();
