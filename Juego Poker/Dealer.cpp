@@ -57,19 +57,14 @@ void Dealer::limpiarDineroTurno()
 
 Carta Dealer::colocarCartaComunitaria()
 {
-	//NECESITO METODO PARA VER PRIMERA CARTA DE MAZO Y BORRARLA
-	return mazo.front();
-	mazo.pop_front();
+	return mazo.devolverPrimeraCarta();
 }
 
 list<Carta> Dealer::repartirCartasJugador()
 {
-	//NECESITO METODO PARA VER PRIMERA CARTA DE MAZO Y BORRARLA
 	list<Carta> cartasJugador;
-	cartasJugador.push_front(mazo.front());
-	mazo.pop_front();
-	cartasJugador.push_front(mazo.front());
-	mazo.pop_front();
+	cartasJugador.push_front(mazo.devolverPrimeraCarta());
+	cartasJugador.push_front(mazo.devolverPrimeraCarta());
 	return cartasJugador;
 }
 
@@ -138,7 +133,7 @@ list<Jugador> Dealer::determinarGanador(list<Jugador> jugadores, list<Carta> car
 			jugadorGanador.pop_front();
 		}
 		tamanoManoJugador = manoJugador.size();
-		for (int j = 0; j < manoJugador.size(); j++)
+		for (int j = 0; j < tamanoManoJugador; j++)
 		{
 			if (manoJugador.front() > manoGanadora)
 			{
