@@ -19,7 +19,7 @@ public:
 	void setNumero(int);
 	int getNumero();
 
-
+	bool operator==(Carta& carta);
 
 
 };

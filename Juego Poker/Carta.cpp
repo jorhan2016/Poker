@@ -22,3 +22,8 @@ int Carta::getPalo() {
 
 	return this->palo;
 }
+
+bool Carta::operator==(Carta &c)
+{
+    return this->palo == c.palo && this->numero == c.numero;
+}
