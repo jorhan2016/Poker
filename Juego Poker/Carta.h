@@ -13,6 +13,7 @@ private:
 public:
 
 	Carta(int, int);
+	Carta();
 	~Carta();
 	void setPalo(int);
 	int getPalo();
@@ -20,6 +21,5 @@ public:
 	int getNumero();
 
 	bool operator==(Carta& carta);
-
 
 };

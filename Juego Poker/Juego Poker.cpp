@@ -21,7 +21,6 @@ int main()
 
 	combi.setCartas(lista1, lista2);
 
-
     return 0;
 }
 

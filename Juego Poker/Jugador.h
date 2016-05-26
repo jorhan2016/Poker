@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Carta.h"
 
 #include <list>
@@ -12,6 +13,7 @@ private:
 public:
 
 	void setCartasJugador(list<Carta>);
+
 	list <Carta> getCartasJugador();
 	void setDinero();
 	int getDinero();
@@ -19,9 +21,7 @@ public:
 	bool decidirApuesta(int, int, int); //mejor q reciba 3 arametros, ver .cpp
 	bool salirJuego(int); //en el  diseño no recibe parametros, pero debe recibir la apuesta.
 
-
 	void imprimirLista(list <Carta>); //para el main pruebas
-
 
 	Jugador();
 	~Jugador();

@@ -9,6 +9,10 @@ Carta::Carta(int palo, int numero) {
 
 }
 
+Carta::Carta() {
+
+};
+
 Carta::~Carta() {
 
 }
@@ -17,6 +21,7 @@ int Carta::getNumero() {
 
 	return this->numero;
 }
+
 
 int Carta::getPalo() {
 
