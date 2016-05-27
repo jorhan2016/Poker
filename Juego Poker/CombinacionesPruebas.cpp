@@ -1,27 +1,11 @@
 #include "stdafx.h"
 #include "Combinaciones.h"
 
-void testGetEscalera() {
-	Combinaciones combinaciones;
-	list<Carta> result = combinaciones.getEscalera();
-	if (true /*check result*/) {
-		std::cout << "%TEST_FAILED% time=0 testname=testGetEscalera (CombinacionesPruebas) message=error message sample" << std::endl;
-	}
-}
-
 void testGetMatrizRepeticiones() {
 	Combinaciones combinaciones;
 	list<list<int>> result = combinaciones.getMatrizRepeticiones();
 	if (true /*check result*/) {
 		std::cout << "%TEST_FAILED% time=0 testname=testGetMatrizRepeticiones (CombinacionesPruebas) message=error message sample" << std::endl;
-	}
-}
-
-void testGetNumeroMano() {
-	Combinaciones combinaciones;
-	int result = combinaciones.getNumeroMano();
-	if (true /*check result*/) {
-		std::cout << "%TEST_FAILED% time=0 testname=testGetNumeroMano (CombinacionesPruebas) message=error message sample" << std::endl;
 	}
 }
 
@@ -99,7 +83,7 @@ void testSetGetCartas() {
 	}
 }
 
-void testSetMatrizRepeticiones() {
+void testSetGetMatrizRepeticiones() {
 	Combinaciones combinaciones;
 	combinaciones.setMatrizRepeticiones();
 	if (true /*check result*/) {
@@ -107,7 +91,7 @@ void testSetMatrizRepeticiones() {
 	}
 }
 
-void testSetNumeroMano() {
+void testSetGetNumeroMano() {
 	Combinaciones combinaciones;
 	combinaciones.setNumeroMano();
 	if (true /*check result*/) {
@@ -144,17 +128,9 @@ int main(int argc, char** argv) {
 	std::cout << "%SUITE_STARTING% CombinacionesPruebas" << std::endl;
 	std::cout << "%SUITE_STARTED%" << std::endl;
 
-	std::cout << "%TEST_STARTED% testGetEscalera (CombinacionesPruebas)" << std::endl;
-	testGetEscalera();
-	std::cout << "%TEST_FINISHED% time=0 testGetEscalera (CombinacionesPruebas)" << std::endl;
-
 	std::cout << "%TEST_STARTED% testGetMatrizRepeticiones (CombinacionesPruebas)" << std::endl;
 	testGetMatrizRepeticiones();
 	std::cout << "%TEST_FINISHED% time=0 testGetMatrizRepeticiones (CombinacionesPruebas)" << std::endl;
-
-	std::cout << "%TEST_STARTED% testGetNumeroMano (CombinacionesPruebas)" << std::endl;
-	testGetNumeroMano();
-	std::cout << "%TEST_FINISHED% time=0 testGetNumeroMano (CombinacionesPruebas)" << std::endl;
 
 	std::cout << "%TEST_STARTED% testObtenerCartaAlta (CombinacionesPruebas)" << std::endl;
 	testObtenerCartaAlta();
@@ -169,11 +145,11 @@ int main(int argc, char** argv) {
 	std::cout << "%TEST_FINISHED% time=0 testSetCartas (CombinacionesPruebas)" << std::endl;
 
 	std::cout << "%TEST_STARTED% testSetMatrizRepeticiones (CombinacionesPruebas)" << std::endl;
-	testSetMatrizRepeticiones();
+	testSetGetMatrizRepeticiones();
 	std::cout << "%TEST_FINISHED% time=0 testSetMatrizRepeticiones (CombinacionesPruebas)" << std::endl;
 
 	std::cout << "%TEST_STARTED% testSetNumeroMano (CombinacionesPruebas)" << std::endl;
-	testSetNumeroMano();
+	testSetGetNumeroMano();
 	std::cout << "%TEST_FINISHED% time=0 testSetNumeroMano (CombinacionesPruebas)" << std::endl;
 
 	std::cout << "%TEST_STARTED% testSetNumeroTurno (CombinacionesPruebas)" << std::endl;

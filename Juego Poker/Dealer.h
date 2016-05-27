@@ -3,6 +3,7 @@
 #include "Carta.h"
 #include "Jugador.h"
 #include "Combinaciones.h"
+#include "stdafx.h"
 
 using namespace std;
 
@@ -17,11 +18,9 @@ public:
 	void setCiega();
 	void setMazo();
 	void setDineroTurno(int dinero);
-	void setContadorMazo();
 	int getCiega();
 	Mazo getMazo();
 	int getDineroTurno();
-	int getContadorMazo();
 	void limpiarDineroTurno();
 	Carta colocarCartaComunitaria();
 	list<Carta> repartirCartasJugador();

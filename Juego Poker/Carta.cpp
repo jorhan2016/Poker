@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Carta.h"
 
-
 Carta::Carta(int palo, int numero) {
 
 	this->palo = palo;

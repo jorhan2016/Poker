@@ -19,38 +19,6 @@ void testDeterminarGanador() {
 	}
 }
 
-void testGetCiega() {
-	Dealer dealer;
-	int result = dealer.getCiega();
-	if (true /*check result*/) {
-		std::cout << "%TEST_FAILED% time=0 testname=testGetCiega (DealerPruebas) message=error message sample" << std::endl;
-	}
-}
-
-void testGetContadorMazo() {
-	Dealer dealer;
-	int result = dealer.getContadorMazo();
-	if (true /*check result*/) {
-		std::cout << "%TEST_FAILED% time=0 testname=testGetContadorMazo (DealerPruebas) message=error message sample" << std::endl;
-	}
-}
-
-void testGetDineroTurno() {
-	Dealer dealer;
-	int result = dealer.getDineroTurno();
-	if (true /*check result*/) {
-		std::cout << "%TEST_FAILED% time=0 testname=testGetDineroTurno (DealerPruebas) message=error message sample" << std::endl;
-	}
-}
-
-void testGetMazo() {
-	Dealer dealer;
-	Mazo result = dealer.getMazo();
-	if (true /*check result*/) {
-		std::cout << "%TEST_FAILED% time=0 testname=testGetMazo (DealerPruebas) message=error message sample" << std::endl;
-	}
-}
-
 void testLimpiarDineroTurno() {
 	Dealer dealer;
 	dealer.limpiarDineroTurno();
@@ -67,7 +35,7 @@ void testRepartirCartasJugador() {
 	}
 }
 
-void testSetCiega() {
+void testSetGetCiega() {
 	Dealer dealer;
 	dealer.setCiega();
 	if (true /*check result*/) {
@@ -75,15 +43,7 @@ void testSetCiega() {
 	}
 }
 
-void testSetContadorMazo() {
-	Dealer dealer;
-	dealer.setContadorMazo();
-	if (true /*check result*/) {
-		std::cout << "%TEST_FAILED% time=0 testname=testSetContadorMazo (DealerPruebas) message=error message sample" << std::endl;
-	}
-}
-
-void testSetDineroTurno() {
+void testSetGetDineroTurno() {
 	int dinero;
 	Dealer dealer;
 	dealer.setDineroTurno(dinero);
@@ -92,7 +52,7 @@ void testSetDineroTurno() {
 	}
 }
 
-void testSetMazo() {
+void testSetGetMazo() {
 	Dealer dealer;
 	dealer.setMazo();
 	if (true /*check result*/) {
@@ -112,22 +72,6 @@ int main(int argc, char** argv) {
 	testDeterminarGanador();
 	std::cout << "%TEST_FINISHED% time=0 testDeterminarGanador (DealerPruebas)" << std::endl;
 
-	std::cout << "%TEST_STARTED% testGetCiega (DealerPruebas)" << std::endl;
-	testGetCiega();
-	std::cout << "%TEST_FINISHED% time=0 testGetCiega (DealerPruebas)" << std::endl;
-
-	std::cout << "%TEST_STARTED% testGetContadorMazo (DealerPruebas)" << std::endl;
-	testGetContadorMazo();
-	std::cout << "%TEST_FINISHED% time=0 testGetContadorMazo (DealerPruebas)" << std::endl;
-
-	std::cout << "%TEST_STARTED% testGetDineroTurno (DealerPruebas)" << std::endl;
-	testGetDineroTurno();
-	std::cout << "%TEST_FINISHED% time=0 testGetDineroTurno (DealerPruebas)" << std::endl;
-
-	std::cout << "%TEST_STARTED% testGetMazo (DealerPruebas)" << std::endl;
-	testGetMazo();
-	std::cout << "%TEST_FINISHED% time=0 testGetMazo (DealerPruebas)" << std::endl;
-
 	std::cout << "%TEST_STARTED% testLimpiarDineroTurno (DealerPruebas)" << std::endl;
 	testLimpiarDineroTurno();
 	std::cout << "%TEST_FINISHED% time=0 testLimpiarDineroTurno (DealerPruebas)" << std::endl;
@@ -137,19 +81,15 @@ int main(int argc, char** argv) {
 	std::cout << "%TEST_FINISHED% time=0 testRepartirCartasJugador (DealerPruebas)" << std::endl;
 
 	std::cout << "%TEST_STARTED% testSetCiega (DealerPruebas)" << std::endl;
-	testSetCiega();
+	testSetGetCiega();
 	std::cout << "%TEST_FINISHED% time=0 testSetCiega (DealerPruebas)" << std::endl;
 
-	std::cout << "%TEST_STARTED% testSetContadorMazo (DealerPruebas)" << std::endl;
-	testSetContadorMazo();
-	std::cout << "%TEST_FINISHED% time=0 testSetContadorMazo (DealerPruebas)" << std::endl;
-
 	std::cout << "%TEST_STARTED% testSetDineroTurno (DealerPruebas)" << std::endl;
-	testSetDineroTurno();
+	testSetGetDineroTurno();
 	std::cout << "%TEST_FINISHED% time=0 testSetDineroTurno (DealerPruebas)" << std::endl;
 
 	std::cout << "%TEST_STARTED% testSetMazo (DealerPruebas)" << std::endl;
-	testSetMazo();
+	testSetGetMazo();
 	std::cout << "%TEST_FINISHED% time=0 testSetMazo (DealerPruebas)" << std::endl;
 
 	std::cout << "%SUITE_FINISHED% time=0" << std::endl;

@@ -1,6 +1,6 @@
+
 #include "stdafx.h"
 #include "Mesa.h"
-
 
 Mesa::Mesa() {
 
@@ -10,7 +10,7 @@ Mesa::~Mesa() {
 
 }
 
-void Mesa::setCartasComunitarias(list<Carta*> cartasComunitarias) {
+void Mesa::setCartasComunitarias(list<Carta> cartasComunitarias) {
 
 	this->cartasComunitarias = cartasComunitarias;
 
@@ -24,8 +24,8 @@ void Mesa::setApuesta(int cantidadCiega, int turno) {
 
 	}
 	else {
-
-		this->apuesta = cantidadCiega*(1 + 0.1*(turno - 1));
+		
+		this->apuesta = (int)(cantidadCiega*(1 + 0.1*(turno - 1)));
 
 	}
 
@@ -36,7 +36,7 @@ void Mesa::setDineroMesa(int dineroMesa) {
 
 }
 
-list<Carta*> Mesa::getCartasComunitarias() {
+list<Carta> Mesa::getCartasComunitarias() {
 
 	return cartasComunitarias;
 

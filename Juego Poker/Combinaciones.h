@@ -1,5 +1,6 @@
 #pragma once
 #include "Carta.h"
+#include "stdafx.h"
 
 using namespace std;
 
@@ -17,7 +18,8 @@ public:
 	list<Carta> getCartas();
 	void ordenarCartas();
 	bool verificarColor();
-	bool verificarEscalera();
+	void verificarEscalera();
+	bool getHayEscalera();
 	int obtenerCartaAlta();
 	void setMatrizRepeticiones();
 	list<list<int>> getMatrizRepeticiones();
@@ -30,6 +32,7 @@ private:
 	list<list<int>> matrizRepeticiones;
 	int numeroMano;
 	int numeroTurno;
+	bool hayEscalera;
 	void setMatrizRepeticiones(list<Carta>::iterator inicio, list<list<int>> matriz);
-	bool verificarEscalera(list<Carta>::iterator inicio);
+	void verificarEscalera(list<Carta>::iterator inicio);
 };
