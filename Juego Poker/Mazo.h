@@ -1,6 +1,11 @@
 #pragma once
+<<<<<<< HEAD
 #include "stdafx.h"
 #include "Carta.h"
+=======
+
+#include <vector>
+>>>>>>> Jorhan
 
 using namespace std;
 
