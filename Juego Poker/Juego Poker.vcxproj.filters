@@ -27,7 +27,7 @@
       <Filter>h</Filter>
     </ClInclude>
     <ClInclude Include="Combinaciones.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>h</Filter>
     </ClInclude>
     <ClInclude Include="Dealer.h">
       <Filter>h</Filter>
@@ -44,11 +44,7 @@
     <ClInclude Include="Mesa.h">
       <Filter>h</Filter>
     </ClInclude>
-<<<<<<< HEAD
-=======
-    <ClInclude Include="Combinaciones.h">
-      <Filter>h</Filter>
-    </ClInclude>
+
     <ClInclude Include="targetver.h">
       <Filter>visual</Filter>
     </ClInclude>
@@ -58,23 +54,23 @@
     <ClInclude Include="PruebaCarta.h">
       <Filter>pruebas\h</Filter>
     </ClInclude>
->>>>>>> Jorhan
+
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Carta.cpp">
       <Filter>cpp</Filter>
     </ClCompile>
     <ClCompile Include="Combinaciones.cpp">
-      <Filter>Archivos de código fuente</Filter>
+      <Filter>cpp</Filter>
     </ClCompile>
     <ClCompile Include="CombinacionesPruebas.cpp">
-      <Filter>Archivos de código fuente</Filter>
+      <Filter>pruebas\cpp</Filter>
     </ClCompile>
     <ClCompile Include="Dealer.cpp">
       <Filter>cpp</Filter>
     </ClCompile>
     <ClCompile Include="DealerPruebas.cpp">
-      <Filter>Archivos de código fuente</Filter>
+      <Filter>pruebas\cpp</Filter>
     </ClCompile>
     <ClCompile Include="Juego.cpp">
       <Filter>cpp</Filter>
@@ -88,11 +84,7 @@
     <ClCompile Include="Mesa.cpp">
       <Filter>cpp</Filter>
     </ClCompile>
-<<<<<<< HEAD
-=======
-    <ClCompile Include="Combinaciones.cpp">
-      <Filter>cpp</Filter>
-    </ClCompile>
+
     <ClCompile Include="stdafx.cpp">
       <Filter>visual</Filter>
     </ClCompile>
@@ -102,6 +94,6 @@
     <ClCompile Include="PruebaCarta.cpp">
       <Filter>pruebas\cpp</Filter>
     </ClCompile>
->>>>>>> Jorhan
+
   </ItemGroup>
 </Project>
