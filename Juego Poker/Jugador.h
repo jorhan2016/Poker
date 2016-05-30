@@ -19,7 +19,7 @@ public:
 	void setDinero();
 	int getDinero();
 	void reducirDinero(int);
-	bool decidirApuesta(int, int, int); //mejor q reciba 3 arametros, ver .cpp
+	bool decidirApuesta(int, int, int); //mejor q reciba 3 parametros, ver .cpp
 	bool salirJuego(int); //en el  diseño no recibe parametros, pero debe recibir la apuesta.
 
 
