@@ -19,8 +19,9 @@ void Mazo::setBaraja() {
 	for (int a = 0; a <= 3; a++) {
 
 		for (int b = 0; b <= 13; b++) {
-
-			this->misCartas.push_front(new Carta(b, a));
+			
+			Carta carta(b, a);
+			this->misCartas.push_front(carta);
 
 		}
 
@@ -28,7 +29,7 @@ void Mazo::setBaraja() {
 
 }
 
-list<Carta *> Mazo::getBaraja() {
+list<Carta> Mazo::getBaraja() {
 
 	return this->misCartas;
 
@@ -36,12 +37,12 @@ list<Carta *> Mazo::getBaraja() {
 
 void Mazo::revolverCartas() {
 
-	srand(time(NULL));
+	srand((unsigned int)time(0));
 
 	for (int i = 0; i < 1000; i++) {
 
-		list<Carta*>::iterator it1 = misCartas.begin();
-		list<Carta*>::iterator it2 = misCartas.begin();
+		list<Carta>::iterator it1 = misCartas.begin();
+		list<Carta>::iterator it2 = misCartas.begin();
 
 		int limite1 = rand() % misCartas.size();
 		int limite2 = rand() % misCartas.size();
@@ -56,7 +57,7 @@ void Mazo::revolverCartas() {
 			++it2;
 		}
 
-		Carta *temporal = *it1;
+		Carta temporal = *it1;
 		*it1 = *it2;
 		*it2 = temporal;
 
@@ -64,9 +65,9 @@ void Mazo::revolverCartas() {
 	}
 }
 
-Carta* Mazo::devolverPrimeraCarta() {
+Carta Mazo::devolverPrimeraCarta() {
 
-	Carta* cartaTemporal = misCartas.front();
+	Carta cartaTemporal = misCartas.front();
 	misCartas.pop_front();
 	return cartaTemporal;
 

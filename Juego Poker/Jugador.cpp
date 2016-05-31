@@ -40,43 +40,43 @@ bool Jugador::decidirApuesta(int apuesta, int numeroMano, int numTurno) //agregu
 {
 	bool b;
 	if (numTurno = 2) {
-		if ((numeroMano == 1 || numeroMano == 2) & apuesta <= 55)
+		if ((numeroMano == 1 || numeroMano == 2) && apuesta <= 55)
 			b;
-		if ((numeroMano == 3 || numeroMano == 4) & apuesta <= 110)
+		if ((numeroMano == 3 || numeroMano == 4) && apuesta <= 110)
 			b;
-		if ((numeroMano == 5 || numeroMano == 6) & apuesta <= 165)
+		if ((numeroMano == 5 || numeroMano == 6) && apuesta <= 165)
 			b;
-		if ((numeroMano == 7 || numeroMano == 8) & apuesta <= 220)
+		if ((numeroMano == 7 || numeroMano == 8) && apuesta <= 220)
 			b;
-		if ((numeroMano == 9 || numeroMano == 10) & apuesta <= 275)
+		if ((numeroMano == 9 || numeroMano == 10) && apuesta <= 275)
 			b;
 	}
 	else  b = false;
 
 	if (numTurno = 3) {
-		if ((numeroMano == 1 || numeroMano == 2) & apuesta <= 56)
+		if ((numeroMano == 1 || numeroMano == 2) && apuesta <= 56)
 			b;
-		if ((numeroMano == 3 || numeroMano == 4) & apuesta <= 113)
+		if ((numeroMano == 3 || numeroMano == 4) && apuesta <= 113)
 			b;
-		if ((numeroMano == 5 || numeroMano == 6) & apuesta <= 173)
+		if ((numeroMano == 5 || numeroMano == 6) && apuesta <= 173)
 			b;
-		if ((numeroMano == 7 || numeroMano == 8) & apuesta <= 235)
+		if ((numeroMano == 7 || numeroMano == 8) && apuesta <= 235)
 			b;
-		if ((numeroMano == 9 || numeroMano == 10) & apuesta <= 302)
+		if ((numeroMano == 9 || numeroMano == 10) && apuesta <= 302)
 			b;
 	}
 	else  b = false;
 
 	if (numTurno = 4) {
-		if ((numeroMano == 1 || numeroMano == 2) & apuesta <= 57)
+		if ((numeroMano == 1 || numeroMano == 2) && apuesta <= 57)
 			b;
-		if ((numeroMano == 3 || numeroMano == 4) & apuesta <= 116)
+		if ((numeroMano == 3 || numeroMano == 4) && apuesta <= 116)
 			b;
-		if ((numeroMano == 5 || numeroMano == 6) & apuesta <= 181)
+		if ((numeroMano == 5 || numeroMano == 6) && apuesta <= 181)
 			b;
-		if ((numeroMano == 7 || numeroMano == 8) & apuesta <= 251)
+		if ((numeroMano == 7 || numeroMano == 8) && apuesta <= 251)
 			b;
-		if ((numeroMano == 9 || numeroMano == 10) & apuesta <= 332)
+		if ((numeroMano == 9 || numeroMano == 10) && apuesta <= 332)
 			b;
 	}
 	else b = false;

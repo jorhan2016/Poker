@@ -8,7 +8,7 @@ class Mesa {
 
 private:
 
-	list<Carta*> cartasComunitarias;
+	list<Carta> cartasComunitarias;
 	int apuesta;
 	int dineroMesa;
 
@@ -16,10 +16,10 @@ public:
 
 	Mesa();
 	~Mesa();
-	void setCartasComunitarias(list<Carta*>);
+	void setCartasComunitarias(list<Carta>);
 	void setApuesta(int, int);
 	void setDineroMesa(int);
-	list<Carta*> getCartasComunitarias();
+	list<Carta> getCartasComunitarias();
 	int getApuesta();
 	int getDineroMesa();
 	void limpiarDineroMesa();

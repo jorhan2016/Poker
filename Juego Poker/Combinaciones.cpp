@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Combinaciones.h"
 
-
 Combinaciones::Combinaciones()
 {
 }
@@ -31,6 +30,11 @@ int Combinaciones::getNumeroTurno()
 list<Carta> Combinaciones::getEscalera()
 {
 	return escalera;
+}
+
+bool Combinaciones::getHayEscalera()
+{
+	return hayEscalera;
 }
 
 void Combinaciones::setCartas(list<Carta> jugador, list<Carta> comunitarias)
@@ -95,15 +99,15 @@ bool Combinaciones::verificarColor()
 	return booleano;
 }
 
-bool Combinaciones::verificarEscalera()
+void Combinaciones::verificarEscalera()
 {
 	list<Carta>::iterator inicio = cartas.begin();
-	return Combinaciones::verificarEscalera(++inicio);
+	Combinaciones::verificarEscalera(++inicio);
 }
 
-bool Combinaciones::verificarEscalera(list<Carta>::iterator inicio)
+void Combinaciones::verificarEscalera(list<Carta>::iterator inicio)
 {
-	bool booleano = false;
+	hayEscalera = false;
 	if (inicio != cartas.end())
 	{
 		list<Carta>::iterator anteriorInicio = --inicio;
@@ -119,7 +123,7 @@ bool Combinaciones::verificarEscalera(list<Carta>::iterator inicio)
 				escalera.push_back((*it));
 				if (contador >= numeroTurno)
 				{
-					booleano = true;
+					hayEscalera = true;
 					break;
 				}
 			}
@@ -129,7 +133,6 @@ bool Combinaciones::verificarEscalera(list<Carta>::iterator inicio)
 			}
 		}
 	}
-	return booleano;
 }
 
 int Combinaciones::obtenerCartaAlta()
@@ -179,7 +182,8 @@ list<list<int>> Combinaciones::getMatrizRepeticiones()
 void Combinaciones::setNumeroMano()
 {
 	Combinaciones::ordenarCartas();
-	if (Combinaciones::verificarEscalera())
+	Combinaciones::verificarEscalera();
+	if (Combinaciones::getHayEscalera())
 	{
 		if (Combinaciones::verificarColor())
 		{

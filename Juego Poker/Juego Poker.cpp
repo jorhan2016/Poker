@@ -5,7 +5,6 @@
 #include "Carta.h"
 #include "Combinaciones.h"
 
-
 int main()
 {
 	Carta carta1(1, 1);

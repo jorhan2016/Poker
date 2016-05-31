@@ -20,7 +20,6 @@ Dealer::Dealer(Dealer& otro)
 
 void Dealer::setCiega()
 {
-	srand((unsigned int)time(0));
 	ciega = rand() % 250 + 1;
 }
 
