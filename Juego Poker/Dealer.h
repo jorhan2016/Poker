@@ -1,4 +1,5 @@
 #pragma once
+#include "stdafx.h"
 #include "Mazo.h"
 #include "Carta.h"
 #include "Jugador.h"

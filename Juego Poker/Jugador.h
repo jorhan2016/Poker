@@ -1,7 +1,7 @@
-#include <iostream>
+#pragma once
+#include "stdafx.h"
 #include "Carta.h"
 
-#include <list>
 using namespace std;
 
 class Jugador {

@@ -1,5 +1,5 @@
 #pragma once
-#include <iostream>
+#include "stdafx.h"
 
 using namespace std;
 
@@ -20,6 +20,6 @@ public:
 	void setNumero(int);
 	int getNumero();
 
-	bool operator==(Carta& carta);
+	bool operator==(const Carta& carta) const;
 
 };

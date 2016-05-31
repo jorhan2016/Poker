@@ -1,5 +1,5 @@
 #pragma once
-#include <list>
+#include "stdafx.h"
 #include "Carta.h"
 
 using namespace std;

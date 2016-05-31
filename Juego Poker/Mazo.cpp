@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Mazo.h"
 #include "Carta.h"
-#include <list>
 
 
 Mazo::Mazo() {
