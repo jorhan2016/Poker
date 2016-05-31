@@ -1,7 +1,6 @@
 #pragma once
 #include "stdafx.h"
 #include "Carta.h"
-#include "stdafx.h"
 
 using namespace std;
 
