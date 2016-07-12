@@ -3,13 +3,6 @@
 
 void testObtenerCartaAlta()
 {
-	Combinaciones combinaciones;
-	int result = combinaciones.obtenerCartaAlta();
-	if (true /*check result*/)
-	{
-		std::cout << "%TEST_FAILED% time=0 testname=testObtenerCartaAlta (CombinacionesPruebas) message=error message sample" << std::endl;
-	}
-	
 	Carta carta1(1, 14);
 	Carta carta2(1, 8);
 	Carta carta3(2, 4);
