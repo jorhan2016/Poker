@@ -23,18 +23,19 @@ void Juego::iniciarJuego(){
 
 		numeroTurno = 1;
 
-		while (continuaElTurno()) {
+		while (continuaLaRonda()) {
 
 			elDealer->setCiega(); //El Dealer establece el monto de la ciega
-			
-
-
-			laMesa->setApuesta(elDealer->getCiega(), numeroRonda); //Se estable
+			reducirDineroDeJugadores(elDealer->getCiega());
+			laMesa->setApuesta(elDealer->getCiega(), numeroRonda); //Se estable la apuesta del turno
+			colocarCartasComunitarias();
 
 
 			numeroTurno++;
 		}
+
 		declararGanadorRonda();
+		laMesa->limpiarDineroMesa();
 
 		numeroRonda++;
 	}
@@ -64,8 +65,39 @@ void Juego::crearJugadores(){
 
 void Juego::declararGanadorRonda(){
 
-	determinarJugadoresActivos(); //Falta implementar metodo
 	elDealer->determinarGanador(); //falta
+}
+
+void Juego::reducirDineroDeJugadores(int montoDinero){
+
+	for (list<Jugador *>::iterator it = losJugadores.begin(); it != losJugadores.end(); ++it) {
+
+		if ((*it)->getDinero >= montoDinero) {
+
+			(*it)->reducirDinero(montoDinero);
+			laMesa->setDineroMesa(montoDinero);
+		}
+		else {
+			(*it)->setParticipaEnRonda(false);
+		}
+
+
+	}
+
+}
+
+void Juego::colocarCartasComunitarias(){
+
+	if (numeroTurno == 1) {
+
+		Carta* cartaProvenienteDelDealer = &(elDealer->colocarCartaComunitaria());
+		laMesa->setCartaComunitaria(cartaProvenienteDelDealer);
+
+	}
+	else {
+
+	}
+
 }
 
 bool Juego::continuaElJuego(){
@@ -94,7 +126,7 @@ bool Juego::seHaAlcanzadoElNumeroMaximoDeRondas(){
 	return numeroRonda != totalRondas;
 }
 
-bool Juego::continuaElTurno(){
+bool Juego::continuaLaRonda(){
 
 	return false;
 }

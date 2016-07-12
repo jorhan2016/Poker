@@ -22,6 +22,7 @@ private:
 	Mesa* laMesa;
 	Dealer* elDealer;
 
+
 public:
 
 	Juego();
@@ -31,8 +32,11 @@ public:
 	void crearJugadores();
 	void declararGanadorJuego();
 	void declararGanadorRonda();
+	void reducirDineroDeJugadores(int);
+	void colocarCartasComunitarias();
+
 	bool continuaElJuego();
 	bool existeAlMenosUnJugadorConDinero();
 	bool seHaAlcanzadoElNumeroMaximoDeRondas();
-	bool continuaElTurno();
+	bool continuaLaRonda();
 };

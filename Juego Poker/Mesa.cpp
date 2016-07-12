@@ -2,6 +2,7 @@
 #include "Mesa.h"
 
 Mesa::Mesa() {
+	this->dineroMesa = 0;
 
 }
 
@@ -9,9 +10,9 @@ Mesa::~Mesa() {
 
 }
 
-void Mesa::setCartasComunitarias(list<Carta> cartasComunitarias) {
+void Mesa::setCartaComunitaria(Carta* cartaComunitaria) {
 
-	this->cartasComunitarias = cartasComunitarias;
+	this->cartasComunitarias.push_front(cartaComunitaria);
 
 }
 
@@ -31,11 +32,11 @@ void Mesa::setApuesta(int cantidadCiega, int turno) {
 }
 
 void Mesa::setDineroMesa(int dineroMesa) {
-	this->dineroMesa = dineroMesa;
+	this->dineroMesa = this->dineroMesa + dineroMesa;
 
 }
 
-list<Carta> Mesa::getCartasComunitarias() {
+list<Carta*> Mesa::getCartasComunitarias() {
 
 	return cartasComunitarias;
 

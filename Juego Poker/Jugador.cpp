@@ -6,8 +6,7 @@ Jugador::Jugador(){
 }
 
 
-Jugador::~Jugador()
-{
+Jugador::~Jugador(){
 }
 
 void Jugador::setCartasJugador(list<Carta> cartasrepartidas) {
