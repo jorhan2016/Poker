@@ -5,8 +5,9 @@
 Juego::Juego(){
 
 	Mesa* laMesa = new Mesa();
-	totalTurnos = 10;
-	numeroTurno = 0;
+	totalTurnos = 4;
+	totalRondas = 10;
+	numeroRonda = 0;
 }
 
 Juego::~Juego(){
@@ -18,10 +19,24 @@ void Juego::iniciarJuego(){
 	ingresarNumeroJugadores();
 	crearJugadores();
 
-	//Es importante aclarar que una cosa es ganador juego y otra ganador ronda
 	while (continuaElJuego()) {
 
+		numeroTurno = 1;
 
+		while (continuaElTurno()) {
+
+			elDealer->setCiega(); //El Dealer establece el monto de la ciega
+			
+
+
+			laMesa->setApuesta(elDealer->getCiega(), numeroRonda); //Se estable
+
+
+			numeroTurno++;
+		}
+		declararGanadorRonda();
+
+		numeroRonda++;
 	}
 
 	declararGanadorJuego();
@@ -47,9 +62,15 @@ void Juego::crearJugadores(){
 
 }
 
+void Juego::declararGanadorRonda(){
+
+	determinarJugadoresActivos(); //Falta implementar metodo
+	elDealer->determinarGanador(); //falta
+}
+
 bool Juego::continuaElJuego(){
 	
-	return (existeAlMenosUnJugadorConDinero() || seHaAlcanzadoElNumeroMaximoDeTurnos());
+	return (existeAlMenosUnJugadorConDinero() || seHaAlcanzadoElNumeroMaximoDeRondas());
 
 
 }
@@ -68,9 +89,14 @@ bool Juego::existeAlMenosUnJugadorConDinero(){
 	return (jugadoresConDinero > 1);
 }
 
-bool Juego::seHaAlcanzadoElNumeroMaximoDeTurnos(){
+bool Juego::seHaAlcanzadoElNumeroMaximoDeRondas(){
 
-	return numeroTurno != totalTurnos;
+	return numeroRonda != totalRondas;
+}
+
+bool Juego::continuaElTurno(){
+
+	return false;
 }
 
 
