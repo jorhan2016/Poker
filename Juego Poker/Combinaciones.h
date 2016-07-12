@@ -1,6 +1,6 @@
 #pragma once
-#include "Carta.h"
 #include "stdafx.h"
+#include "Carta.h"
 
 using namespace std;
 

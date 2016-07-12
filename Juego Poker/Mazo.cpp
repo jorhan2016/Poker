@@ -2,6 +2,7 @@
 #include "Mazo.h"
 #include "Carta.h"
 
+
 Mazo::Mazo() {
 
 	void setBaraja();

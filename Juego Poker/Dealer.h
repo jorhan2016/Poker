@@ -1,9 +1,9 @@
 #pragma once
+#include "stdafx.h"
 #include "Mazo.h"
 #include "Carta.h"
 #include "Jugador.h"
 #include "Combinaciones.h"
-#include "stdafx.h"
 
 using namespace std;
 
