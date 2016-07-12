@@ -5,7 +5,8 @@
 Juego::Juego(){
 
 	Mesa* laMesa = new Mesa();
-	
+	totalTurnos = 10;
+	numeroTurno = 0;
 }
 
 Juego::~Juego(){
@@ -17,6 +18,13 @@ void Juego::iniciarJuego(){
 	ingresarNumeroJugadores();
 	crearJugadores();
 
+	//Es importante aclarar que una cosa es ganador juego y otra ganador ronda
+	while (continuaElJuego()) {
+
+
+	}
+
+	declararGanadorJuego();
 }
 
 void Juego::ingresarNumeroJugadores(){
@@ -38,4 +46,32 @@ void Juego::crearJugadores(){
 	}
 
 }
+
+bool Juego::continuaElJuego(){
+	
+	return (existeAlMenosUnJugadorConDinero() || seHaAlcanzadoElNumeroMaximoDeTurnos());
+
+
+}
+
+bool Juego::existeAlMenosUnJugadorConDinero(){
+	
+	int jugadoresConDinero = 0;
+	for (list<Jugador *>::iterator it = losJugadores.begin(); it != losJugadores.end(); ++it) {
+
+		if ((*it)->getDinero > 0) {
+			jugadoresConDinero++;
+		}
+
+	}
+	
+	return (jugadoresConDinero > 1);
+}
+
+bool Juego::seHaAlcanzadoElNumeroMaximoDeTurnos(){
+
+	return numeroTurno != totalTurnos;
+}
+
+
 

@@ -10,10 +10,11 @@ class Juego {
 
 private:
 
+	int totalTurnos;
+	int numeroTurno;
 	int numeroJugadores;
 	list<Jugador*> losJugadores;
 	Mesa* laMesa;
-
 
 public:
 
@@ -22,4 +23,8 @@ public:
 	void iniciarJuego();
 	void ingresarNumeroJugadores();
 	void crearJugadores();
+	void declararGanadorJuego();
+	bool continuaElJuego();
+	bool existeAlMenosUnJugadorConDinero();
+	bool seHaAlcanzadoElNumeroMaximoDeTurnos();
 };
