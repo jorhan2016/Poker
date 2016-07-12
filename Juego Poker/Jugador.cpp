@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "Jugador.h"
 
-Jugador::Jugador()
-{
+Jugador::Jugador(){
+	setDinero();
 }
 
 
@@ -86,13 +86,7 @@ bool Jugador::decidirApuesta(int apuesta, int numeroMano, int numTurno) //agregu
 
 bool Jugador::salirJuego(int apuesta) // en el  diseño no recibe parametros, pero debe recibir la apuesta.
 {
-	bool b;
-	if (dinero >= apuesta) {
-		b;
-	}
-	else b = false;
-
-	return b;
+	return dinero >= apuesta;
 }
 
 void Jugador::imprimirLista(list <Carta> pareja) // es para probar el set y get .

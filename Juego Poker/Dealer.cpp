@@ -3,12 +3,10 @@
 #include "Carta.h"
 #include "Mazo.h"
 
-Dealer::Dealer()
-{
+Dealer::Dealer(){
 }
 
-Dealer::~Dealer()
-{
+Dealer::~Dealer(){
 }
 
 Dealer::Dealer(Dealer& otro)

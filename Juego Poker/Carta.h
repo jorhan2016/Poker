@@ -20,6 +20,6 @@ public:
 	void setNumero(int);
 	int getNumero();
 
-	bool operator==(Carta& carta);
+	bool operator==(const Carta& carta) const;
 
 };
