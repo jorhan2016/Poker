@@ -22,7 +22,7 @@ public:
 	Mazo getMazo();
 	int getDineroTurno();
 	void limpiarDineroTurno();
-	Carta colocarCartaComunitaria();
+	Carta entregarCarta();
 	list<Carta> repartirCartasJugador();
 	list<Jugador> determinarGanador(list<Jugador> jugadores, list<Carta> cartasComunitarias);
 

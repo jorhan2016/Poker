@@ -7,6 +7,9 @@ Dealer::Dealer(){
 }
 
 Dealer::~Dealer(){
+
+
+	
 }
 
 Dealer::Dealer(Dealer& otro)
@@ -52,7 +55,7 @@ void Dealer::limpiarDineroTurno()
 	dineroTurno = 0;
 }
 
-Carta Dealer::colocarCartaComunitaria()
+Carta Dealer::entregarCarta()
 {
 	return mazo.devolverPrimeraCarta();
 }

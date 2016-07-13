@@ -1,8 +1,10 @@
 #include "stdafx.h"
 #include "Jugador.h"
 
-Jugador::Jugador(){
-	setDinero();
+Jugador::Jugador(int ID){
+	
+	this->dinero = 5000;
+	this->ID = ID;
 }
 
 
@@ -18,14 +20,23 @@ list <Carta> Jugador::getCartasJugador()
 	return cartasJugador;
 }
 
-void Jugador::setDinero()
+void Jugador::setDinero(int dineroGanado)
 {
-	dinero = 5000;
+	dinero = dinero + dineroGanado;
 }
 
 int Jugador::getDinero()
 {
 	return dinero;
+}
+
+void Jugador::setParticipaEnRonda(bool condicion){
+
+	this->participaEnRonda = condicion;
+}
+
+bool Jugador::getParticipaEnRonda(){
+	return participaEnRonda;
 }
 
 void Jugador::reducirDinero(int rebaja)

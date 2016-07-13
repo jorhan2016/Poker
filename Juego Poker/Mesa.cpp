@@ -10,7 +10,7 @@ Mesa::~Mesa() {
 
 }
 
-void Mesa::setCartaComunitaria(Carta* cartaComunitaria) {
+void Mesa::setCartaComunitaria(Carta cartaComunitaria) {
 
 	this->cartasComunitarias.push_front(cartaComunitaria);
 
@@ -36,7 +36,7 @@ void Mesa::setDineroMesa(int dineroMesa) {
 
 }
 
-list<Carta*> Mesa::getCartasComunitarias() {
+list<Carta> Mesa::getCartasComunitarias() {
 
 	return cartasComunitarias;
 

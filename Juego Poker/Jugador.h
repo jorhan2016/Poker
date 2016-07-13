@@ -11,15 +11,17 @@ private:
 	int dinero;
 	bool participaEnRonda;
 
-
 public:
 
 	void setCartasJugador(list<Carta>);
 
 	list <Carta> getCartasJugador();
 
-	void setDinero();
+	void setDinero(int);
 	int getDinero();
+
+	int ID;
+
 
 	void setParticipaEnRonda(bool);
 	bool getParticipaEnRonda();
@@ -30,6 +32,7 @@ public:
 
 	void imprimirLista(list <Carta>); //para el main pruebas
 
-	Jugador();
+
+	Jugador(int);
 	~Jugador();
 };

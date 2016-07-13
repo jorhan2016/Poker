@@ -1,28 +1,14 @@
-// Juego Poker.cpp: define el punto de entrada de la aplicación de consola.
-//
 
 #include "stdafx.h"
 #include "Juego.h"
 
 int main() {
 
-#if _DEBUG
-	pruebas();
-#endif
+	Juego* juegoPoker = new Juego();
+	juegoPoker->iniciarJuego();
 
-	Juego j;
-	j.iniciarJuego();
 
+	delete juegoPoker;
+	system("pause");
     return 0;
 }
-
-int pruebas() {
-
-	// Pruebas para la clase Carta
-	// PruebaCarta pC;
-	// pC.probar();
-
-
-
-}
-

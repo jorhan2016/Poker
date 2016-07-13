@@ -5,12 +5,22 @@
 Juego::Juego(){
 
 	Mesa* laMesa = new Mesa();
-	totalTurnos = 4;
+	Dealer* elDealer = new Dealer();
+	totalTurnos = 3;
 	totalRondas = 10;
-	numeroRonda = 0;
+	numeroRonda = 1;
 }
 
 Juego::~Juego(){
+
+	for (list<Jugador *>::iterator it = losJugadores.begin(); it != losJugadores.end(); ++it) {
+
+		delete *it;
+
+	}
+	delete laMesa;
+	delete elDealer;
+
 }
 
 void Juego::iniciarJuego(){
@@ -21,16 +31,23 @@ void Juego::iniciarJuego(){
 
 	while (continuaElJuego()) {
 
+		cout << "Inicia la ronda: " << numeroRonda << "del juego" << endl;
 		numeroTurno = 1;
 
 		while (continuaLaRonda()) {
 
 			elDealer->setCiega(); //El Dealer establece el monto de la ciega
+			cout << "El monto establecido por el Dealer es: " << elDealer->getCiega << endl;
+			
 			reducirDineroDeJugadores(elDealer->getCiega());
+
+			cout << "Se reduce el dinero a cada jugador activo" << endl;
 			laMesa->setApuesta(elDealer->getCiega(), numeroRonda); //Se estable la apuesta del turno
+
 			colocarCartasComunitarias();
-
-
+			entregarCartasAJugadores();
+			determinarApuestasJugadores();
+			
 			numeroTurno++;
 		}
 
@@ -57,15 +74,49 @@ void Juego::crearJugadores(){
 
 	for (int i = 0; i < numeroJugadores; i++) {
 
-		losJugadores.push_front(new Jugador());
+		losJugadores.push_front(new Jugador(i+1));
 		
 	}
 
 }
 
+void Juego::declararGanadorJuego(){
+
+	Jugador* jugadorConMasDinero = losJugadores.front();
+	for (list<Jugador *>::iterator it = losJugadores.begin(); it != losJugadores.end(); ++it) {
+
+		if ((*it)->getDinero > jugadorConMasDinero->getDinero) {
+
+			jugadorConMasDinero = (*it);
+		}
+
+	}
+
+	cout << "El ganador del juego es: " << jugadorConMasDinero->ID << endl;
+
+}
+
 void Juego::declararGanadorRonda(){
 
-	elDealer->determinarGanador(); //falta
+	list<Jugador> jugadoresActivos;
+	list<Jugador> jugadoresOrdenadosPorMejorMano;
+	int numeroJugadoresActivos = 0;
+	for (list<Jugador *>::iterator it = losJugadores.begin(); it != losJugadores.end(); ++it) {
+
+		if ((*it)->getParticipaEnRonda()) {
+
+			jugadoresActivos.push_front((**it));
+			numeroJugadoresActivos++;
+		}
+
+	}
+	
+	list<Jugador> jugadoresOrdenadosPorMejorMano;
+	jugadoresOrdenadosPorMejorMano = elDealer->determinarGanador(jugadoresActivos, laMesa->getCartasComunitarias());
+
+	cout << "El ganador de la ronda es: " << jugadoresOrdenadosPorMejorMano.front().ID << endl;
+	jugadoresOrdenadosPorMejorMano.front().setDinero(laMesa->getDineroMesa());
+	
 }
 
 void Juego::reducirDineroDeJugadores(int montoDinero){
@@ -90,11 +141,58 @@ void Juego::colocarCartasComunitarias(){
 
 	if (numeroTurno == 1) {
 
-		Carta* cartaProvenienteDelDealer = &(elDealer->colocarCartaComunitaria());
+		Carta cartaProvenienteDelDealer = (elDealer->entregarCarta());
 		laMesa->setCartaComunitaria(cartaProvenienteDelDealer);
+		Carta cartaProvenienteDelDealer = (elDealer->entregarCarta());
+		laMesa->setCartaComunitaria(cartaProvenienteDelDealer);
+		Carta cartaProvenienteDelDealer = (elDealer->entregarCarta());
+		laMesa->setCartaComunitaria(cartaProvenienteDelDealer);
+
 
 	}
 	else {
+		Carta cartaProvenienteDelDealer = (elDealer->entregarCarta());
+		laMesa->setCartaComunitaria(cartaProvenienteDelDealer);
+	}
+
+}
+
+void Juego::entregarCartasAJugadores(){
+
+	for (list<Jugador*>::iterator it = losJugadores.begin(); it != losJugadores.end(); ++it) {
+
+		if ((*it)->getParticipaEnRonda()){
+
+			(*it)->setCartasJugador(elDealer->repartirCartasJugador());
+
+		}
+
+	}
+
+}
+
+void Juego::determinarApuestasJugadores(){
+
+	Combinaciones combinacionCartas;
+	for (list<Jugador *>::iterator it = losJugadores.begin(); it != losJugadores.end(); ++it) {
+
+		if ((*it)->getParticipaEnRonda()) {
+
+			combinacionCartas.setCartas((*it)->getCartasJugador(), laMesa->getCartasComunitarias());
+			int numeroMano = combinacionCartas.getNumeroMano();
+
+			if ((*it)->decidirApuesta(laMesa->getApuesta(), numeroMano, numeroTurno)) {
+
+				(*it)->reducirDinero(laMesa->getApuesta());
+				laMesa->setDineroMesa(laMesa->getApuesta());
+
+			}
+			else {
+
+				(*it)->setParticipaEnRonda(false);
+			}
+
+		}
 
 	}
 
@@ -102,7 +200,7 @@ void Juego::colocarCartasComunitarias(){
 
 bool Juego::continuaElJuego(){
 	
-	return (existeAlMenosUnJugadorConDinero() || seHaAlcanzadoElNumeroMaximoDeRondas());
+	return (existeAlMenosUnJugadorConDinero() && !seHaAlcanzadoElNumeroMaximoDeRondas());
 
 
 }
@@ -128,7 +226,15 @@ bool Juego::seHaAlcanzadoElNumeroMaximoDeRondas(){
 
 bool Juego::continuaLaRonda(){
 
-	return false;
+	int jugadoresActivos = 0;
+	for (list<Jugador *>::iterator it = losJugadores.begin(); it != losJugadores.end(); ++it) {
+
+		if ((*it)->getParticipaEnRonda()) {
+			jugadoresActivos++;
+		}
+
+	}
+	return (jugadoresActivos>0 &&  numeroRonda<=totalRondas);
 }
 
 

@@ -27,6 +27,7 @@ public:
 
 	Juego();
 	~Juego();
+
 	void iniciarJuego();
 	void ingresarNumeroJugadores();
 	void crearJugadores();
@@ -34,9 +35,11 @@ public:
 	void declararGanadorRonda();
 	void reducirDineroDeJugadores(int);
 	void colocarCartasComunitarias();
+	void entregarCartasAJugadores();
+	void determinarApuestasJugadores();
 
 	bool continuaElJuego();
+	bool continuaLaRonda();
 	bool existeAlMenosUnJugadorConDinero();
 	bool seHaAlcanzadoElNumeroMaximoDeRondas();
-	bool continuaLaRonda();
 };
