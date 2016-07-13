@@ -224,9 +224,7 @@ bool Juego::existeAlMenosUnJugadorConDinero(){
 }
 
 
-
 bool Juego::continuaLaRonda(){
-	cout << "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" << endl;
 	int jugadoresActivos = 0;
 	for (list<Jugador *>::iterator it = losJugadores.begin(); it != losJugadores.end(); ++it) {
 
@@ -234,23 +232,6 @@ bool Juego::continuaLaRonda(){
 			jugadoresActivos++;
 		}
 
-	}
-	cout << "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB" << endl;
-
-	if (jugadoresActivos > 0) {
-
-		cout << "true" << endl;
-	}
-	else {
-		cout << "false" << endl;
-	}
-
-	if (numeroRonda <= totalRondas ) {
-
-		cout << "true" << endl;
-	}
-	else {
-		cout << "false" << endl;
 	}
 
 	return (jugadoresActivos>0 &&  numeroRonda<=totalRondas);
