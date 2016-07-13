@@ -10,3 +10,4 @@ PruebaCarta::PruebaCarta()
 PruebaCarta::~PruebaCarta()
 {
 }
+

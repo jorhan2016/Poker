@@ -46,7 +46,7 @@ void Juego::ingresarNumeroJugadores(){
 
 	//Esto es necesario porque hay que validar que el numero de jugadores sean como minimo 2 y maximo 6.
 	do {
-		cout << "Para iniciar digite el numero de jugadores humanos que participaran" << endl;
+		cout << "Para iniciar digite el numero de jugadores humanos que participaran, recuerde que deben ser mas de minimo 2 y maximo 6" << endl;
 		cin >> numeroJugadores;
 	} while (numeroJugadores < 2 || numeroJugadores > 6);
 

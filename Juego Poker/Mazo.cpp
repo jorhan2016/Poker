@@ -16,9 +16,9 @@ Mazo::~Mazo() {
 void Mazo::setBaraja() {
 
 
-	for (int a = 0; a <= 3; a++) {
+	for (int a = 1; a <= 4; a++) {
 
-		for (int b = 0; b <= 13; b++) {
+		for (int b = 2; b <= 14; ++b) {
 			
 			Carta carta(b, a);
 			this->misCartas.push_front(carta);

@@ -99,8 +99,7 @@ bool Combinaciones::verificarColor()
 	return booleano;
 }
 
-void Combinaciones::verificarEscalera()
-{
+void Combinaciones::verificarEscalera(){
 	list<Carta>::iterator inicio = cartas.begin();
 	Combinaciones::verificarEscalera(++inicio);
 }
