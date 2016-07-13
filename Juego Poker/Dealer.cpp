@@ -19,8 +19,8 @@ Dealer::Dealer(Dealer& otro)
 	this->dineroTurno = otro.dineroTurno;
 }
 
-void Dealer::setCiega()
-{
+void Dealer::setCiega(){
+
 	ciega = rand() % 250 + 1;
 }
 

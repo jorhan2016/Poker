@@ -53,8 +53,8 @@ list<Carta> Combinaciones::getCartas()
 	return cartas;
 }
 
-void Combinaciones::ordenarCartas()
-{
+void Combinaciones::ordenarCartas(){
+/*
 	bool ordenado = false;
 	while (!ordenado)
 	{
@@ -74,7 +74,21 @@ void Combinaciones::ordenarCartas()
 		{
 			ordenado = true;
 		}
+	}*/
+	int contador = 0;
+	for (list<Carta>::iterator it = cartas.begin(); it != cartas.end(); ++it)
+	{
+		for (list<Carta>::iterator it2 = it; it2 != cartas.end(); ++it2)
+		{
+			if ((*it).getNumero() > (*it2).getNumero())
+			{
+				Carta temporal = *it;
+				*it = *it2;
+				*it2 = temporal;
+			}
+		}
 	}
+
 }
 
 bool Combinaciones::verificarColor()
@@ -144,7 +158,7 @@ int Combinaciones::obtenerCartaAlta()
 void Combinaciones::setMatrizRepeticiones()
 {
 	list<list<int>> repeticiones;
-	Combinaciones::setMatrizRepeticiones(cartas.begin()++, repeticiones);
+	Combinaciones::setMatrizRepeticiones(++cartas.begin(), repeticiones);
 }
 
 void Combinaciones::setMatrizRepeticiones(list<Carta>::iterator inicio, list<list<int>> matriz)

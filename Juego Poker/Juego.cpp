@@ -31,13 +31,15 @@ void Juego::iniciarJuego(){
 
 	while (continuaElJuego()) {
 
+		cout << "Estoy aca" << endl;
 		cout << "Inicia la ronda: " << numeroRonda << "del juego" << endl;
 		numeroTurno = 1;
 
 		while (continuaLaRonda()) {
+			cout << "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCc" << endl;
 
 			elDealer->setCiega(); //El Dealer establece el monto de la ciega
-			cout << "El monto establecido por el Dealer es: " << elDealer->getCiega << endl;
+			cout << "El monto establecido por el Dealer es: " << elDealer->getCiega() << endl;
 			
 			reducirDineroDeJugadores(elDealer->getCiega());
 
@@ -85,7 +87,7 @@ void Juego::declararGanadorJuego(){
 	Jugador* jugadorConMasDinero = losJugadores.front();
 	for (list<Jugador *>::iterator it = losJugadores.begin(); it != losJugadores.end(); ++it) {
 
-		if ((*it)->getDinero > jugadorConMasDinero->getDinero) {
+		if ((*it)->getDinero() > jugadorConMasDinero->getDinero()) {
 
 			jugadorConMasDinero = (*it);
 		}
@@ -111,10 +113,10 @@ void Juego::declararGanadorRonda(){
 
 	}
 	
-	list<Jugador> jugadoresOrdenadosPorMejorMano;
-	jugadoresOrdenadosPorMejorMano = elDealer->determinarGanador(jugadoresActivos, laMesa->getCartasComunitarias());
+	//list<Jugador> jugadoresOrdenadosPorMejorMano();
+	//jugadoresOrdenadosPorMejorMano = elDealer->determinarGanador(jugadoresActivos, laMesa->getCartasComunitarias());
 
-	cout << "El ganador de la ronda es: " << jugadoresOrdenadosPorMejorMano.front().ID << endl;
+	cout << "El ganador de la ronda es: " << elDealer->determinarGanador(jugadoresActivos, laMesa->getCartasComunitarias()).front().ID << endl;
 	jugadoresOrdenadosPorMejorMano.front().setDinero(laMesa->getDineroMesa());
 	
 }
@@ -123,7 +125,7 @@ void Juego::reducirDineroDeJugadores(int montoDinero){
 
 	for (list<Jugador *>::iterator it = losJugadores.begin(); it != losJugadores.end(); ++it) {
 
-		if ((*it)->getDinero >= montoDinero) {
+		if ((*it)->getDinero() >= montoDinero) {
 
 			(*it)->reducirDinero(montoDinero);
 			laMesa->setDineroMesa(montoDinero);
@@ -139,20 +141,17 @@ void Juego::reducirDineroDeJugadores(int montoDinero){
 
 void Juego::colocarCartasComunitarias(){
 
+
 	if (numeroTurno == 1) {
 
-		Carta cartaProvenienteDelDealer = (elDealer->entregarCarta());
-		laMesa->setCartaComunitaria(cartaProvenienteDelDealer);
-		Carta cartaProvenienteDelDealer = (elDealer->entregarCarta());
-		laMesa->setCartaComunitaria(cartaProvenienteDelDealer);
-		Carta cartaProvenienteDelDealer = (elDealer->entregarCarta());
-		laMesa->setCartaComunitaria(cartaProvenienteDelDealer);
+		laMesa->setCartaComunitaria(elDealer->entregarCarta());
+		laMesa->setCartaComunitaria(elDealer->entregarCarta());
+		laMesa->setCartaComunitaria(elDealer->entregarCarta());
 
 
 	}
 	else {
-		Carta cartaProvenienteDelDealer = (elDealer->entregarCarta());
-		laMesa->setCartaComunitaria(cartaProvenienteDelDealer);
+		laMesa->setCartaComunitaria(elDealer->entregarCarta());
 	}
 
 }
@@ -200,9 +199,14 @@ void Juego::determinarApuestasJugadores(){
 
 bool Juego::continuaElJuego(){
 	
-	return (existeAlMenosUnJugadorConDinero() && !seHaAlcanzadoElNumeroMaximoDeRondas());
+	return (existeAlMenosUnJugadorConDinero() && seHaAlcanzadoElNumeroMaximoDeRondas());
 
 
+}
+
+bool Juego::seHaAlcanzadoElNumeroMaximoDeRondas() {
+
+	return numeroRonda != totalRondas;
 }
 
 bool Juego::existeAlMenosUnJugadorConDinero(){
@@ -210,7 +214,7 @@ bool Juego::existeAlMenosUnJugadorConDinero(){
 	int jugadoresConDinero = 0;
 	for (list<Jugador *>::iterator it = losJugadores.begin(); it != losJugadores.end(); ++it) {
 
-		if ((*it)->getDinero > 0) {
+		if ((*it)->getDinero() > 0) {
 			jugadoresConDinero++;
 		}
 
@@ -219,13 +223,10 @@ bool Juego::existeAlMenosUnJugadorConDinero(){
 	return (jugadoresConDinero > 1);
 }
 
-bool Juego::seHaAlcanzadoElNumeroMaximoDeRondas(){
 
-	return numeroRonda != totalRondas;
-}
 
 bool Juego::continuaLaRonda(){
-
+	cout << "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" << endl;
 	int jugadoresActivos = 0;
 	for (list<Jugador *>::iterator it = losJugadores.begin(); it != losJugadores.end(); ++it) {
 
@@ -234,6 +235,24 @@ bool Juego::continuaLaRonda(){
 		}
 
 	}
+	cout << "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB" << endl;
+
+	if (jugadoresActivos > 0) {
+
+		cout << "true" << endl;
+	}
+	else {
+		cout << "false" << endl;
+	}
+
+	if (numeroRonda <= totalRondas ) {
+
+		cout << "true" << endl;
+	}
+	else {
+		cout << "false" << endl;
+	}
+
 	return (jugadoresActivos>0 &&  numeroRonda<=totalRondas);
 }
 

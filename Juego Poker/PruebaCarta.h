@@ -1,8 +1,8 @@
 #pragma once
-class PruebaCarta
-{
-public:
-	PruebaCarta();
-	~PruebaCarta();
-};
-
+//class PruebaCarta
+//{
+//public:
+//	PruebaCarta();
+//	~PruebaCarta();
+//};
+//

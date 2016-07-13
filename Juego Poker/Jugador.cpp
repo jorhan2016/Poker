@@ -5,6 +5,7 @@ Jugador::Jugador(int ID){
 	
 	this->dinero = 5000;
 	this->ID = ID;
+	this->participaEnRonda = true;
 }
 
 
