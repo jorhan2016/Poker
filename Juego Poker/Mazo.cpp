@@ -19,7 +19,11 @@ void Mazo::setBaraja() {
 
 	for (int a = 1; a <= 4; a++) {
 
+<<<<<<< HEAD
 		for (int b = 2; b <= 14; b++) {
+=======
+		for (int b = 2; b <= 14; ++b) {
+>>>>>>> Jorhan
 			
 			Carta carta(a, b);
 			this->misCartas.push_front(carta);

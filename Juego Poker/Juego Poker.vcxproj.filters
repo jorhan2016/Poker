@@ -44,7 +44,6 @@
     <ClInclude Include="Mesa.h">
       <Filter>h</Filter>
     </ClInclude>
-
     <ClInclude Include="targetver.h">
       <Filter>visual</Filter>
     </ClInclude>
@@ -54,7 +53,9 @@
     <ClInclude Include="PruebaCarta.h">
       <Filter>pruebas\h</Filter>
     </ClInclude>
-
+    <ClInclude Include="JugadorPruebas.h">
+      <Filter>pruebas\h</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Carta.cpp">
@@ -84,7 +85,6 @@
     <ClCompile Include="Mesa.cpp">
       <Filter>cpp</Filter>
     </ClCompile>
-
     <ClCompile Include="stdafx.cpp">
       <Filter>visual</Filter>
     </ClCompile>
@@ -94,6 +94,11 @@
     <ClCompile Include="PruebaCarta.cpp">
       <Filter>pruebas\cpp</Filter>
     </ClCompile>
-
+    <ClCompile Include="Juego Poker.cpp">
+      <Filter>cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="JugadorPruebas.cpp">
+      <Filter>pruebas\cpp</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
